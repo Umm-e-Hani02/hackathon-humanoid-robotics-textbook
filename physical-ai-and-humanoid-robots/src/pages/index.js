@@ -17,7 +17,7 @@ const FeatureList = [
         intelligence emerges from the interaction of body and environment.
       </>
     ),
-    to: '/docs/intro-physical-ai/01-what-is-physical-ai', // Link to the module
+    to: '/docs/intro-physical-ai/what-is-physical-ai', // Link to the module
   },
   {
     title: 'Humanoid Movement Systems',
@@ -29,7 +29,7 @@ const FeatureList = [
         and manipulation, from theory to practical implementation.
       </>
     ),
-    to: '/docs/humanoid-movement-systems/01-kinematics-and-dynamics', // Link to the module
+    to: '/docs/humanoid-movement-systems/kinematics-and-dynamics', // Link to the module
   },
   {
     title: 'Control & Intelligence',
@@ -41,7 +41,7 @@ const FeatureList = [
         that enable robots to perceive, decide, and act autonomously.
       </>
     ),
-    to: '/docs/control-intelligence/01-control-algorithms', // Link to the module
+    to: '/docs/control-intelligence/control-algorithms', // Link to the module
   },
   {
     title: 'Development Roadmap',
@@ -53,7 +53,7 @@ const FeatureList = [
         Physical AI and humanoid robotics research and development.
       </>
     ),
-    to: '/docs/development-roadmap/01-future-directions', // Link to the module
+    to: '/docs/development-roadmap/future-directions', // Link to the module
   },
 ];
 
