@@ -1,0 +1,115 @@
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
+.heroBanner {
+  padding: 8rem 0; /* Increased padding for a larger hero section */
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--ifm-background-color); /* Use theme background */
+  color: var(--ifm-font-color-base); /* Use theme font color */
+}
+
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 4rem 2rem; /* Adjusted padding for mobile */
+  }
+}
+
+.hero__title {
+  font-size: 3.5rem; /* Larger title */
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.hero__subtitle {
+  font-size: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  opacity: 0.9;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem; /* Space between buttons if multiple are added */
+}
+
+.buttons .button {
+  border-radius: 8px; /* Rounded corners for buttons */
+  font-size: 1.1rem;
+  padding: 0.8rem 1.8rem;
+  transition: all 0.3s ease;
+}
+
+.buttons .button--secondary {
+  background-color: var(--ifm-color-primary); /* Primary theme color for CTA */
+  color: white;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Soft shadow */
+}
+
+.buttons .button--secondary:hover {
+  background-color: var(--ifm-color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.features {
+  display: flex;
+  align-items: center;
+  padding: 4rem 0;
+  width: 100%;
+  background-color: var(--ifm-background-color); /* Ensure background matches */
+}
+
+.featureSvg {
+  height: 200px; /* Adjust SVG size */
+  width: 200px;
+  margin-bottom: 1rem;
+}
+
+.col {
+  padding: 1.5rem; /* Padding around each card */
+}
+
+.col div { /* This targets the feature card content div */
+  background-color: var(--ifm-card-background-color, #1e293b); /* Card background */
+  border-radius: 12px; /* More rounded corners */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* Soft shadow for cards */
+  padding: 2rem;
+  height: 100%; /* Ensure cards have consistent height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.col div:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.col h3 {
+  color: var(--ifm-color-primary); /* Use primary color for feature titles */
+  margin-bottom: 1rem;
+}
+
+.col p {
+  color: var(--ifm-font-color-base);
+  opacity: 0.8;
+}
+
+[data-theme='dark'] {
+  .col div {
+    background-color: #1a202c; /* Slightly different background for dark mode cards */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  }
+
+  .col div:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  }
+}
