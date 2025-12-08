@@ -175,6 +175,16 @@
   font-size: 0.9rem;
 }
 
+.featureCardLink {
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Inherit color from parent */
+}
+
+.featureCardLink:hover {
+  text-decoration: none; /* Ensure no underline on hover */
+  color: inherit; /* Ensure color doesn't change on hover */
+}
+
 [data-theme='dark'] {
   .heroImage {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);

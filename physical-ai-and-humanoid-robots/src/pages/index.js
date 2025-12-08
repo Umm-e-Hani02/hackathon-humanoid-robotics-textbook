@@ -17,6 +17,7 @@ const FeatureList = [
         intelligence emerges from the interaction of body and environment.
       </>
     ),
+    to: '/docs/intro-physical-ai/01-what-is-physical-ai', // Link to the module
   },
   {
     title: 'Humanoid Movement Systems',
@@ -28,6 +29,7 @@ const FeatureList = [
         and manipulation, from theory to practical implementation.
       </>
     ),
+    to: '/docs/humanoid-movement-systems/01-kinematics-and-dynamics', // Link to the module
   },
   {
     title: 'Control & Intelligence',
@@ -39,6 +41,7 @@ const FeatureList = [
         that enable robots to perceive, decide, and act autonomously.
       </>
     ),
+    to: '/docs/control-intelligence/01-control-algorithms', // Link to the module
   },
   {
     title: 'Development Roadmap',
@@ -50,23 +53,26 @@ const FeatureList = [
         Physical AI and humanoid robotics research and development.
       </>
     ),
+    to: '/docs/development-roadmap/01-future-directions', // Link to the module
   },
 ];
 
 // Feature card component
-function Feature({Svg, title, subtitle, description}) {
+function Feature({Svg, title, subtitle, description, to}) {
   return (
     <div className={clsx('col col--3')}> {/* col--3 for 4 cards in a row */}
-      <div className={styles.featureCard}>
-        <div className="text--center">
-          <Svg className={styles.featureSvg} role="img" />
+      <Link to={to} className={styles.featureCardLink}> {/* Wrap card in Link */}
+        <div className={styles.featureCard}>
+          <div className="text--center">
+            <Svg className={styles.featureSvg} role="img" />
+          </div>
+          <div className="text--center padding-horiz--md">
+            <Heading as="h3">{title}</Heading>
+            <p className={styles.featureSubtitle}>{subtitle}</p>
+            <p>{description}</p>
+          </div>
         </div>
-        <div className="text--center padding-horiz--md">
-          <Heading as="h3">{title}</Heading>
-          <p className={styles.featureSubtitle}>{subtitle}</p>
-          <p>{description}</p>
-        </div>
-      </div>
+      </Link>
     </div>
   );
 }
