@@ -8,47 +8,64 @@ import styles from './index.module.css';
 // Feature data for the cards section
 const FeatureList = [
   {
-    title: 'Simulate Complex Systems',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default, // Placeholder SVG
+    title: 'Introduction to Physical AI',
+    subtitle: 'Foundation of embodied intelligence',
+    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default, // Placeholder for icon
     description: (
       <>
-        Explore advanced simulations for humanoid robots, understanding their
-        interactions with diverse physical environments.
+        Dive deep into the core concepts of Physical AI, understanding how
+        intelligence emerges from the interaction of body and environment.
       </>
     ),
   },
   {
-    title: 'Develop Intelligent Control',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default, // Placeholder SVG
+    title: 'Humanoid Movement Systems',
+    subtitle: 'Kinematics, dynamics, and control',
+    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default, // Placeholder for icon
     description: (
       <>
-        Learn to design and implement cutting-edge AI algorithms for
-        robot movement, perception, and decision-making.
+        Explore the intricate mechanisms behind humanoid locomotion, balance,
+        and manipulation, from theory to practical implementation.
       </>
     ),
   },
   {
-    title: 'Build and Integrate Hardware',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default, // Placeholder SVG
+    title: 'Control & Intelligence',
+    subtitle: 'Algorithms for autonomous behavior',
+    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default, // Placeholder for icon
     description: (
       <>
-        Gain practical experience in assembling and integrating various
-        hardware components into functional robotic systems.
+        Learn to design and implement advanced control strategies and AI algorithms
+        that enable robots to perceive, decide, and act autonomously.
+      </>
+    ),
+  },
+  {
+    title: 'Development Roadmap',
+    subtitle: 'Future of Physical AI',
+    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default, // Placeholder for icon
+    description: (
+      <>
+        Understand the current trends, challenges, and future directions in
+        Physical AI and humanoid robotics research and development.
       </>
     ),
   },
 ];
 
 // Feature card component
-function Feature({Svg, title, description}) {
+function Feature({Svg, title, subtitle, description}) {
   return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
-      </div>
-      <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
+    <div className={clsx('col col--3')}> {/* col--3 for 4 cards in a row */}
+      <div className={styles.featureCard}>
+        <div className="text--center">
+          <Svg className={styles.featureSvg} role="img" />
+        </div>
+        <div className="text--center padding-horiz--md">
+          <Heading as="h3">{title}</Heading>
+          <p className={styles.featureSubtitle}>{subtitle}</p>
+          <p>{description}</p>
+        </div>
       </div>
     </div>
   );
@@ -60,16 +77,25 @@ function HomepageHero() {
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
-        <Heading as="h1" className="hero__title">
-          {siteConfig.title}
-        </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/intro">
-            Start Reading Now 🚀
-          </Link>
+        <div className="row hero__content">
+          <div className="col col--6 hero__text-content">
+            <Heading as="h1" className="hero__title">
+              Physical AI & Humanoid Robotics
+            </Heading>
+            <p className="hero__subtitle">
+              A comprehensive guide to building, simulating, and controlling intelligent humanoid robots.
+            </p>
+            <div className={styles.buttons}>
+              <Link
+                className="button button--secondary button--lg"
+                to="/docs/intro">
+                Start Learning
+              </Link>
+            </div>
+          </div>
+          <div className="col col--6 hero__image-content">
+            <img src="/img/robot-hero.png" alt="Humanoid Robot" className={styles.heroImage} />
+          </div>
         </div>
       </div>
     </header>
@@ -96,8 +122,8 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Learn to build, simulate, and control intelligent humanoid robots.">
+      title={`Physical AI & Humanoid Robotics`}
+      description="A comprehensive guide to building, simulating, and controlling intelligent humanoid robots.">
       <HomepageHero />
       <main>
         <HomepageFeatures />

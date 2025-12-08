@@ -4,112 +4,200 @@
  */
 
 .heroBanner {
-  padding: 8rem 0; /* Increased padding for a larger hero section */
-  text-align: center;
+  padding: 4rem 0;
+  text-align: left; /* Align text left for the new layout */
   position: relative;
   overflow: hidden;
-  background-color: var(--ifm-background-color); /* Use theme background */
-  color: var(--ifm-font-color-base); /* Use theme font color */
+  background-color: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+  min-height: 550px; /* Ensure a minimum height for the hero section */
+  display: flex;
+  align-items: center;
 }
 
 @media screen and (max-width: 996px) {
   .heroBanner {
-    padding: 4rem 2rem; /* Adjusted padding for mobile */
+    padding: 2rem;
+    text-align: center; /* Center text on smaller screens */
+    min-height: unset;
   }
 }
 
+.hero__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem; /* Spacing between text and image */
+}
+
+@media screen and (max-width: 996px) {
+  .hero__content {
+    flex-direction: column; /* Stack content on smaller screens */
+  }
+}
+
+.hero__text-content {
+  flex: 1; /* Take available space */
+  max-width: 50%;
+}
+
+@media screen and (max-width: 996px) {
+  .hero__text-content {
+    max-width: 100%;
+    order: 2; /* Text after image on mobile */
+  }
+}
+
+.hero__image-content {
+  flex: 1;
+  max-width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 996px) {
+  .hero__image-content {
+    max-width: 100%;
+    order: 1; /* Image before text on mobile */
+  }
+}
+
+.heroImage {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px; /* Rounded corners for image */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Soft shadow for image */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.heroImage:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
 .hero__title {
-  font-size: 3.5rem; /* Larger title */
-  font-weight: bold;
-  margin-bottom: 1rem;
+  font-size: 3.8rem; /* Larger, premium title */
+  font-weight: 800; /* Extra bold */
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
 }
 
 .hero__subtitle {
-  font-size: 1.5rem;
-  max-width: 800px;
-  margin: 0 auto 2rem;
-  opacity: 0.9;
+  font-size: 1.3rem;
+  margin-bottom: 2.5rem;
+  opacity: 0.85;
 }
 
 .buttons {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 1rem; /* Space between buttons if multiple are added */
+  justify-content: flex-start; /* Align button left with text */
+  gap: 1rem;
+}
+
+@media screen and (max-width: 996px) {
+  .buttons {
+    justify-content: center; /* Center button on mobile */
+  }
 }
 
 .buttons .button {
-  border-radius: 8px; /* Rounded corners for buttons */
+  border-radius: 50px; /* Pill-shaped button for modern look */
   font-size: 1.1rem;
-  padding: 0.8rem 1.8rem;
+  padding: 0.9rem 2.2rem;
   transition: all 0.3s ease;
+  font-weight: 600;
 }
 
 .buttons .button--secondary {
-  background-color: var(--ifm-color-primary); /* Primary theme color for CTA */
+  background-color: var(--ifm-color-primary);
   color: white;
   border: none;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Soft shadow */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 .buttons .button--secondary:hover {
   background-color: var(--ifm-color-primary-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
 }
 
 .features {
-  display: flex;
-  align-items: center;
-  padding: 4rem 0;
+  padding: 5rem 0;
   width: 100%;
-  background-color: var(--ifm-background-color); /* Ensure background matches */
+  background-color: var(--ifm-background-color);
+}
+
+.featureCard {
+  background-color: var(--ifm-card-background-color);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center; /* Center content within card */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  margin-bottom: 2rem; /* Add space between cards vertically on small screens */
+}
+
+.featureCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .featureSvg {
-  height: 200px; /* Adjust SVG size */
-  width: 200px;
+  height: 90px; /* Smaller icons for cards */
+  width: 90px;
+  margin-bottom: 1.5rem;
+  color: var(--ifm-color-primary); /* Use primary color for SVG icons */
+}
+
+.featureCard h3 {
+  color: var(--ifm-font-color-base); /* Card titles match general text */
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.featureSubtitle {
+  font-size: 0.95rem;
+  opacity: 0.7;
   margin-bottom: 1rem;
+  color: var(--ifm-font-color-base);
 }
 
-.col {
-  padding: 1.5rem; /* Padding around each card */
-}
-
-.col div { /* This targets the feature card content div */
-  background-color: var(--ifm-card-background-color, #1e293b); /* Card background */
-  border-radius: 12px; /* More rounded corners */
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* Soft shadow for cards */
-  padding: 2rem;
-  height: 100%; /* Ensure cards have consistent height */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.col div:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-.col h3 {
-  color: var(--ifm-color-primary); /* Use primary color for feature titles */
-  margin-bottom: 1rem;
-}
-
-.col p {
+.featureCard p {
   color: var(--ifm-font-color-base);
   opacity: 0.8;
+  font-size: 0.9rem;
 }
 
 [data-theme='dark'] {
-  .col div {
-    background-color: #1a202c; /* Slightly different background for dark mode cards */
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  .heroImage {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   }
 
-  .col div:hover {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  .heroImage:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  }
+
+  .buttons .button--secondary {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  }
+
+  .buttons .button--secondary:hover {
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+  }
+
+  .featureCard {
+    background-color: var(--ifm-card-background-color);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .featureCard:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   }
 }
