@@ -1,0 +1,9 @@
+{
+  "default": true,
+  "MD013": {
+    "line_length": 80
+  },
+  "MD033": {
+    "allowed_elements": ["p", "br", "div", "span", "a", "img", "h1", "h2", "h3", "h4", "h5", "h6", "ul", "ol", "li", "table", "thead", "tbody", "tr", "th", "td", "pre", "code", "blockquote", "hr", "em", "strong", "b", "i", "del", "ins", "sub", "sup", "kbd", "samp", "var", "small", "big", "dfn", "cite", "q", "abbr", "data", "time", "s", "u", "mark", "wbr"]
+  }
+}

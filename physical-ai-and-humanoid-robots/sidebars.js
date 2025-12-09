@@ -27,14 +27,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Hardware Setup',
-      items: [
-        'hardware-setup/setup-guide',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Module 1: Physical AI Fundamentals',
+      label: 'Module 1: The Robotic Nervous System (ROS 2)',
       items: [
         'module1/what-is-physical-ai',
         'module1/embodied-intelligence',
@@ -44,7 +37,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Module 2: ROS2 and Python Agents',
+      label: 'Module 2: The Digital Twin',
       items: [
         'module2/ros2-basics',
         'module2/rclpy-python-agents',
@@ -54,7 +47,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Module 3: Simulation Environments',
+      label: 'Module 3: The AI-Robot Brain',
       items: [
         'module3/gazebo-simulation',
         'module3/unity-environments',
@@ -64,7 +57,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Module 4: Advanced Robotics Platforms',
+      label: 'Module 4: Vision-Language-Action (VLA)',
       items: [
         'module4/isaac-sdk-and-sim',
         'module4/isaac-ros',
@@ -74,24 +67,12 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Tutorial Basics',
+      label: 'Hardware Setup',
       items: [
-        'tutorial-basics/create-a-document',
-        'tutorial-basics/create-a-blog-post',
-        'tutorial-basics/create-a-page',
-        'tutorial-basics/markdown-features',
-        'tutorial-basics/deploy-your-site',
-        'tutorial-basics/congratulations',
+        'hardware-setup/setup-guide',
       ],
     },
-    {
-      type: 'category',
-      label: 'Tutorial Extras',
-      items: [
-        'tutorial-extras/manage-docs-versions',
-        'tutorial-extras/translate-your-site',
-      ],
-    },
+
   ],
 
   // But you can create a sidebar manually

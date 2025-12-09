@@ -1,0 +1,8 @@
+{
+  "label": "Module 4: Advanced Robotics Platforms",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "description": "Dive into advanced platforms like Isaac SDK and Isaac ROS."
+  }
+}

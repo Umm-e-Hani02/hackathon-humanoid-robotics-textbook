@@ -1,0 +1,8 @@
+{
+  "label": "Module 3: Simulation Environments",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "description": "Explore Gazebo and Unity for robot simulation."
+  }
+}

@@ -1,213 +1,232 @@
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
-
 .heroBanner {
-  padding: 4rem 0;
-  text-align: left; /* Align text left for the new layout */
+  padding: 10rem 0;
+  text-align: center;
   position: relative;
   overflow: hidden;
-  background-color: var(--ifm-background-color);
-  color: var(--ifm-font-color-base);
-  min-height: 550px; /* Ensure a minimum height for the hero section */
   display: flex;
   align-items: center;
-}
-
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
-    text-align: center; /* Center text on smaller screens */
-    min-height: unset;
-  }
-}
-
-.hero__content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem; /* Spacing between text and image */
-}
-
-@media screen and (max-width: 996px) {
-  .hero__content {
-    flex-direction: column; /* Stack content on smaller screens */
-  }
-}
-
-.hero__text-content {
-  flex: 1; /* Take available space */
-  max-width: 50%;
-}
-
-@media screen and (max-width: 996px) {
-  .hero__text-content {
-    max-width: 100%;
-    order: 2; /* Text after image on mobile */
-  }
-}
-
-.hero__image-content {
-  flex: 1;
-  max-width: 50%;
-  display: flex;
   justify-content: center;
-  align-items: center;
+  min-height: 70vh; /* Make hero section take up more vertical space */
 }
 
-@media screen and (max-width: 996px) {
-  .hero__image-content {
-    max-width: 100%;
-    order: 1; /* Image before text on mobile */
+[data-theme='light'] .heroBanner {
+  background: radial-gradient(circle at center, #E6F1FF 0%, #FFFFFF 100%);
+  color: var(--custom-dark-bg);
+}
+
+[data-theme='dark'] .heroBanner {
+  background: radial-gradient(circle at center, var(--custom-dark-bg-light) 0%, var(--custom-dark-bg) 100%);
+  color: var(--custom-light-text);
+}
+
+.scifiSphere {
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle at center, #2CB677 0%, #1E7B4F 100%); /* Emerald gradient */
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.7;
+  filter: blur(80px); /* Soft glow effect */
+  animation: pulse 4s infinite alternate; /* Subtle pulse animation */
+  z-index: 0;
+}
+
+[data-theme='light'] .scifiSphere {
+  opacity: 0.4;
+  filter: blur(120px);
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.05);
+    opacity: 0.8;
   }
 }
 
-.heroImage {
-  max-width: 100%;
-  height: auto;
-  border-radius: 12px; /* Rounded corners for image */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Soft shadow for image */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.heroBanner > .container {
+  position: relative;
+  z-index: 1; /* Ensure content is above the sphere */
 }
 
-.heroImage:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+.heroTitle {
+  font-size: 4.8rem; /* Larger font size */
+  font-weight: 800; /* Bolder */
+  color: var(--custom-light-text);
+  text-shadow: 0 0 20px rgba(51, 212, 139, 0.5); /* Emerald glow */
+  letter-spacing: 0.1rem; /* More spacing for futuristic look */
+  margin-bottom: 1rem;
 }
 
-.hero__title {
-  font-size: 3.8rem; /* Larger, premium title */
-  font-weight: 800; /* Extra bold */
-  margin-bottom: 1.5rem;
-  line-height: 1.1;
-}
-
-.hero__subtitle {
-  font-size: 1.3rem;
-  margin-bottom: 2.5rem;
-  opacity: 0.85;
+.heroSubtitle {
+  font-size: 1.8rem; /* Larger subtitle */
+  font-weight: 300;
+  max-width: 700px; /* Wider subtitle for better flow */
+  margin: 1.5rem auto 3rem auto; /* Adjusted margin */
+  line-height: 1.4;
+  color: var(--custom-light-text);
+  opacity: 0.9;
 }
 
 .buttons {
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* Align button left with text */
-  gap: 1rem;
+  justify-content: center;
+  gap: 1.5rem; /* Increased gap between buttons */
+  margin-top: 2rem;
 }
 
-@media screen and (max-width: 996px) {
-  .buttons {
-    justify-content: center; /* Center button on mobile */
-  }
-}
-
-.buttons .button {
-  border-radius: 50px; /* Pill-shaped button for modern look */
-  font-size: 1.1rem;
-  padding: 0.9rem 2.2rem;
-  transition: all 0.3s ease;
-  font-weight: 600;
-}
-
-.buttons .button--secondary {
-  background-color: var(--ifm-color-primary);
-  color: white;
+.readButton {
+  background-color: var(--custom-primary-accent); /* Keep primary accent */
+  color: #fff;
   border: none;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  padding: 1.2rem 2.5rem; /* Larger padding */
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  border-radius: 5px; /* Slightly rounded corners */
 }
 
-.buttons .button--secondary:hover {
-  background-color: var(--ifm-color-primary-dark);
+.readButton:hover {
+  background-color: var(--custom-secondary-accent);
+  transform: translateY(-3px); /* Subtle lift effect */
+}
+
+.exploreButton {
+  background-color: transparent;
+  color: var(--custom-primary-accent);
+  border: 2px solid var(--custom-primary-accent);
+  padding: 1.2rem 2.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+}
+
+.exploreButton:hover {
+  background-color: var(--custom-primary-accent);
+  color: #fff;
   transform: translateY(-3px);
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
 }
 
-.features {
-  padding: 5rem 0;
-  width: 100%;
-  background-color: var(--ifm-background-color);
-}
+/* Remove .robotIcon as it's no longer used */
 
-.featureCard {
-  background-color: var(--ifm-card-background-color);
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-  padding: 2rem;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center; /* Center content within card */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.section {
+  padding: 6rem 2rem;
   text-align: center;
-  margin-bottom: 2rem; /* Add space between cards vertically on small screens */
 }
 
-.featureCard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 3rem;
+  color: var(--custom-light-text);
 }
 
-.featureSvg {
-  height: 90px; /* Smaller icons for cards */
-  width: 90px;
-  margin-bottom: 1.5rem;
-  color: var(--ifm-color-primary); /* Use primary color for SVG icons */
+.bulletPoints {
+  list-style: none;
+  padding: 0;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+  font-size: 1.1rem;
 }
 
-.featureCard h3 {
-  color: var(--ifm-font-color-base); /* Card titles match general text */
-  margin-bottom: 0.5rem;
-  font-size: 1.5rem;
-}
-
-.featureSubtitle {
-  font-size: 0.95rem;
-  opacity: 0.7;
+.bulletPoints li {
   margin-bottom: 1rem;
-  color: var(--ifm-font-color-base);
+  display: flex;
+  align-items: center;
 }
 
-.featureCard p {
-  color: var(--ifm-font-color-base);
-  opacity: 0.8;
-  font-size: 0.9rem;
+.bulletPoints svg {
+  margin-right: 1rem;
+  fill: var(--custom-primary-accent);
 }
 
-.featureCardLink {
-  text-decoration: none; /* Remove underline */
-  color: inherit; /* Inherit color from parent */
+.modulesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
-.featureCardLink:hover {
-  text-decoration: none; /* Ensure no underline on hover */
-  color: inherit; /* Ensure color doesn't change on hover */
+.moduleCard {
+  background-color: var(--custom-card-bg);
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  border: 1px solid #30363d;
 }
 
-[data-theme='dark'] {
-  .heroImage {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-  }
+.moduleCard:hover {
+  transform: translateY(-5px);
+}
 
-  .heroImage:hover {
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-  }
+.moduleCard h3 {
+  font-size: 1.5rem;
+  margin: 0;
+  color: var(--custom-light-text);
+}
 
-  .buttons .button--secondary {
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-  }
+.benefitsList {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 3rem;
+}
 
-  .buttons .button--secondary:hover {
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
-  }
+.benefit {
+  max-width: 300px;
+}
 
-  .featureCard {
-    background-color: var(--ifm-card-background-color);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-  }
+.benefit h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--custom-primary-accent);
+}
 
-  .featureCard:hover {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-  }
+.aboutSection {
+  background-color: var(--custom-card-bg);
+  padding: 4rem 2rem;
+  border-radius: 8px;
+  max-width: 800px;
+  margin: 0 auto;
+  border: 1px solid #30363d;
+}
+
+[data-theme='light'] .heroTitle,
+[data-theme='light'] .sectionTitle {
+  color: var(--ifm-color-primary);
+}
+
+[data-theme='light'] .moduleCard h3,
+[data-theme='light'] .benefit p,
+[data-theme='light'] .bulletPoints,
+[data-theme='light'] .heroSubtitle {
+  color: var(--custom-dark-bg);
+}
+
+[data-theme='light'] .section,
+[data-theme='light'] .moduleCard,
+[data-theme='light'] .aboutSection {
+  background-color: #ffffff;
+}
+
+[data-theme='light'] .moduleCard,
+[data-theme='light'] .aboutSection {
+  border: 1px solid #dfe1e5;
+}
+
+[data-theme='light'] .bulletPoints svg {
+  fill: var(--custom-primary-accent);
 }
