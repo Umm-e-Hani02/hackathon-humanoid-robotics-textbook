@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkphysical_ai_and_humanoid_robots=globalThis.webpackChunkphysical_ai_and_humanoid_robots||[]).push([[2415],{1019:a=>{a.exports=JSON.parse('{"metadata":{"permalink":"/hackathon-humanoid-robotics-textbook/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":4,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);
