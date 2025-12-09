@@ -25,7 +25,7 @@ function HomepageHero() {
           </Link>
           <Link
             className={clsx('button button--lg', styles.exploreButton)}
-            to="/docs/module1/01-what-is-physical-ai">
+            to="/docs/module1/what-is-physical-ai">
             Explore Modules
           </Link>
         </div>
