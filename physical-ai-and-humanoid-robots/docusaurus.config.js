@@ -15,15 +15,16 @@ const config = {
   favicon: 'img/logo.png',
 
   // Set the production url of your site here
-  url: 'http://localhost',
+  url: 'https://Umm-e-Hani02.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/hackathon-humanoid-robotics-textbook/',
+  trailingSlash: false,
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'local', // Usually your GitHub org/user name.
-  projectName: 'physical-ai-book', // Usually your repo name.
+  organizationName: 'Umm-e-Hani02', // Usually your GitHub org/user name.
+  projectName: 'hackathon-humanoid-robotics-textbook', // Usually your repo name.
 
   onBrokenLinks: 'throw',
 
@@ -45,7 +46,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/physical-ai-book/physical-ai-book/tree/main/',
+            'https://github.com/Umm-e-Hani02/hackathon-humanoid-robotics-textbook/tree/main/',
         },
 
         theme: {
@@ -78,7 +79,7 @@ const config = {
           },
 
           {
-            href: 'https://github.com/physical-ai-book/physical-ai-book',
+            href: 'https://github.com/Umm-e-Hani02/hackathon-humanoid-robotics-textbook',
             label: 'GitHub',
             position: 'right',
           },
@@ -119,7 +120,7 @@ const config = {
 
               {
                 label: 'GitHub',
-                href: 'https://github.com/physical-ai-book/physical-ai-book',
+                href: 'https://github.com/Umm-e-Hani02/hackathon-humanoid-robotics-textbook',
               },
             ],
           },
