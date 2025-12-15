@@ -1,0 +1,63 @@
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/*
+  Credits for the design concepts and color schemes go to the user who
+  provided the detailed request. The implementation below translates
+  that vision into CSS.
+*/
+
+:root {
+  --ifm-font-family-base: 'Inter', sans-serif;
+}
+
+@supports (font-variation-settings: normal) {
+  :root {
+    --ifm-font-family-base: 'Inter var', sans-serif;
+  }
+}
+
+/* Light Theme */
+[data-theme='light'] {
+  --ifm-card-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+  --ifm-button-color: #ffffff;
+  --ifm-footer-background-color: transparent;
+  --ifm-navbar-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Dark Theme */
+[data-theme='dark'] {
+  --ifm-card-shadow: none;
+  --ifm-card-border-color: rgba(220, 189, 227, 0.15);
+  --ifm-button-color: #2b1642;
+  --ifm-footer-background-color: transparent;
+  --ifm-navbar-shadow: none;
+}
+
+/* General Styles */
+.button--primary {
+  font-weight: 600;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.button--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(76, 90, 158, 0.3);
+}
+
+[data-theme='dark'] .button--primary:hover {
+  box-shadow: 0 8px 25px rgba(76, 90, 158, 0.2);
+}
+
+.main-wrapper {
+  background: var(--ifm-background-color);
+}
+
+.footer {
+  border-top: 1px solid var(--ifm-card-border-color, rgba(0,0,0,0.1));
+}
+

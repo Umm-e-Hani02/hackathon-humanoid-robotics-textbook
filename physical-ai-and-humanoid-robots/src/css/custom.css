@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend&display=swap');
+
 /**
  * Any CSS included here will be global. The classic template
  * bundles Infima by default. Infima is a CSS framework designed to
@@ -6,44 +8,104 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #33D48B; /* Vibrant Emerald */
-  --ifm-color-primary-dark: #2CB677;
-  --ifm-color-primary-darker: #259963; /* Darker Emerald for contrast */
-  --ifm-color-primary-darkest: #1E7B4F;
-  --ifm-color-primary-light: #54DE9D; /* Medium Emerald */
-  --ifm-color-primary-lighter: #75E8AF;
-  --ifm-color-primary-lightest: #96F2C2;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-  --ifm-card-background-color: #ffffff; /* Default light mode card background */
+  --ifm-font-family-base: 'Lexend', sans-serif;
+  
+  /* New Light Theme Palette */
+  --ifm-color-primary: #4C5A9E; /* Muted Indigo Accent */
+  --ifm-color-primary-dark: #3E4A85;
+  --ifm-color-primary-darker: #323C6C;
+  --ifm-color-primary-darkest: #262E53;
+  --ifm-color-primary-light: #5A6AB7;
+  --ifm-color-primary-lighter: #6879D0;
+  --ifm-color-primary-lightest: #8594E9;
+  
+  --ifm-background-color: #F5F6FA; /* Very light indigo-tinted background */
+  --ifm-font-color-base: #333333; /* Dark charcoal text */
+  --ifm-card-background-color: #FFFFFF; /* White cards */
+  --ifm-card-box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 
-  /* New variables for futuristic theme (Emerald) */
-  --custom-dark-bg: #0D1117; /* Very dark background */
-  --custom-dark-bg-light: #161B22; /* Slightly lighter for gradient */
-  --custom-light-text: #E6F1FF;
-  --custom-primary-accent: #33D48B; /* Vibrant Emerald */
-  --custom-secondary-accent: #54DE9D; /* Medium Emerald */
-  --custom-card-bg: #161B22; /* Darker background for cards */
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.05);
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #10B981; /* Primary Accent */
-  --ifm-color-primary-dark: #0C9D70;
-  --ifm-color-primary-darker: #065F46; /* Secondary */
-  --ifm-color-primary-darkest: #044330;
-  --ifm-color-primary-light: #29C998;
-  --ifm-color-primary-lighter: #4EDDAE;
-  --ifm-color-primary-lightest: #73F2BF;
+  /* New Dark Theme Palette */
+  --ifm-color-primary: #4C5A9E; /* Muted Indigo Accent */
+  --ifm-color-primary-dark: #3E4A85;
+  --ifm-color-primary-darker: #323C6C;
+  --ifm-color-primary-darkest: #262E53;
+  --ifm-color-primary-light: #5A6AB7;
+  --ifm-color-primary-lighter: #6879D0;
+  --ifm-color-primary-lightest: #8594E9;
 
-  --ifm-background-color: var(--custom-dark-bg);
-  --ifm-font-color-base: var(--custom-light-text);
-  --ifm-card-background-color: var(--custom-card-bg);
+  --ifm-background-color: #1A2035; /* Deep indigo background */
+  --ifm-font-color-base: #F0F0F0; /* Soft off-white text */
+  --ifm-card-background-color: #2A3452; /* Lighter indigo for cards */
+  --ifm-card-box-shadow: none; /* No shadow needed in dark mode */
 
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.2);
 }
 
 .navbar__brand .navbar__logo {
   height: 40px; /* Adjust as needed */
+}
+
+/* Footer Styling */
+.footer {
+  padding: 2rem 0;
+  background-color: var(--ifm-background-color); /* Use theme background color */
+  border-top: 1px solid var(--ifm-color-secondary-lightest);
+}
+
+.footer__title {
+  color: var(--ifm-font-color-base);
+  font-weight: 600;
+}
+
+.footer__link-item {
+  color: var(--ifm-font-color-base);
+}
+
+.footer__link-item:hover {
+  color: var(--ifm-color-primary); /* Lavender accent on hover */
+}
+
+/* Accent colors for typography, buttons, and interactive elements */
+a {
+  color: var(--ifm-color-primary);
+}
+
+a:hover {
+  color: var(--ifm-color-primary-dark);
+  text-decoration: underline;
+}
+
+/* Ensure headings in light sections use secondary color for emphasis */
+.lightSection h1, .lightSection h2, .lightSection h3, .lightSection h4, .lightSection h5, .lightSection h6 {
+  color: var(--ifm-color-secondary);
+}
+
+/* Ensure headings in dark sections use primary color for emphasis */
+.darkSection h1, .darkSection h2, .darkSection h3, .darkSection h4, .darkSection h5, .darkSection h6 {
+  color: var(--ifm-color-primary);
+}
+
+.button--primary {
+  background-color: var(--ifm-color-primary);
+  color: white;
+}
+
+.button--primary:hover {
+  background-color: var(--ifm-color-primary-dark);
+}
+
+.button--secondary {
+  background-color: var(--ifm-color-secondary);
+  color: white;
+}
+
+.button--secondary:hover {
+  background-color: var(--ifm-color-secondary-dark);
 }
 
