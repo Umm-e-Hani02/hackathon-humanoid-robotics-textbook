@@ -1,0 +1,82 @@
+/**
+ * CSS for the Hero Section of the new homepage.
+ * Uses variables defined in src/css/custom.css for theming.
+ */
+
+.hero {
+  color: var(--custom-body-text-color);
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.heroContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.heroTitle {
+  font-size: 4rem;
+  font-weight: 800;
+  color: var(--custom-headings-color);
+  margin-bottom: 1rem;
+}
+
+.heroSubtitle {
+  font-size: 1.25rem;
+  color: var(--custom-muted-text-color);
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.learnSection {
+  background-color: var(--custom-card-background);
+  border: 1px solid var(--custom-border-color);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2.5rem;
+  text-align: left;
+  box-shadow: var(--custom-card-shadow);
+}
+
+[data-theme='dark'] .learnSection {
+  border: 1px solid var(--custom-border-color);
+}
+
+.learnTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--custom-headings-color);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.learnList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.learnListItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 1.1rem;
+  color: var(--custom-body-text-color);
+}
+
+.learnIcon {
+  flex-shrink: 0;
+  margin-top: 4px;
+  color: var(--ifm-color-primary);
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}

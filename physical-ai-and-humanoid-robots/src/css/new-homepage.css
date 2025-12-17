@@ -21,13 +21,7 @@
   }
 }
 
-/* Light Theme */
-[data-theme='light'] {
-  --ifm-card-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
-  --ifm-button-color: #ffffff;
-  --ifm-footer-background-color: transparent;
-  --ifm-navbar-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
+
 
 /* Dark Theme */
 [data-theme='dark'] {
@@ -42,6 +36,7 @@
 .button--primary {
   font-weight: 600;
   transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  border-radius: var(--ifm-button-border-radius);
 }
 
 .button--primary:hover {
@@ -60,4 +55,22 @@
 .footer {
   border-top: 1px solid var(--ifm-card-border-color, rgba(0,0,0,0.1));
 }
+
+/* Added for heading consistency */
+.section-title {
+  font-size: 3rem; /* Increased font size */
+  font-weight: 800; /* Made bolder */
+  margin-bottom: 1.5rem; /* Increased spacing */
+  padding-bottom: 0.5rem; /* Padding for the border */
+  border-bottom: 3px solid var(--ifm-color-primary); /* Prominent bottom border */
+  display: inline-block; /* To make border fit content */
+  text-align: center;
+}
+
+.item-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
 
