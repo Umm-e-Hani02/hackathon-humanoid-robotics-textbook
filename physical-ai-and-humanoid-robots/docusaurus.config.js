@@ -48,9 +48,8 @@ const config = {
           editUrl:
             'https://github.com/Umm-e-Hani02/hackathon-humanoid-robotics-textbook/tree/main/',
         },
-
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: ['./src/css/custom.css', './src/css/new-homepage.css'],
         },
       }),
     ],
@@ -62,7 +61,7 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       colorMode: {
-        respectPrefersColorScheme: true,
+        defaultMode: 'light',
       },
       navbar: {
         title: 'Physical AI Book',
@@ -86,17 +85,8 @@ const config = {
         ],
       },
       footer: {
-        style: 'dark',
+        style: 'light',
         links: [
-          {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Book',
-                to: '/docs/intro',
-              },
-            ],
-          },
           {
             title: 'Community',
             items: [
@@ -112,12 +102,6 @@ const config = {
                 label: 'X',
                 href: 'https://x.com/docusaurus',
               },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-
               {
                 label: 'GitHub',
                 href: 'https://github.com/Umm-e-Hani02/hackathon-humanoid-robotics-textbook',

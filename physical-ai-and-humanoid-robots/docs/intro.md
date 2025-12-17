@@ -21,17 +21,4 @@ This book is your comprehensive guide to understanding and building intelligent 
 
 This book is designed for students, hobbyists, developers, and researchers interested in the cutting edge of robotics and AI. Whether you're new to the field or looking to expand your expertise, this guide will provide you with the knowledge and tools to create your own intelligent robotic systems.
 
-## Book Structure
-
-The book is divided into four main modules, each focusing on a key aspect of Physical AI and humanoid robotics:
-
-- **Module 1: Foundational Knowledge**
-  - Introduction to Physical AI, embodied intelligence, and humanoid basics.
-- **Module 2: The Robotic Nervous System (ROS 2)**
-  - Deep dive into ROS 2 for controlling robots with Python.
-- **Module 3: The Digital Twin (Gazebo & Unity)**
-  - Simulating robots and their environments in virtual worlds.
-- **Module 4: The AI-Robot Brain (NVIDIA Isaac)**
-  - Advanced AI for navigation, perception, and deployment.
-
 Let's begin your journey into the world of Physical AI!

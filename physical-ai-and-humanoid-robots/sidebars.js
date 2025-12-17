@@ -22,22 +22,25 @@ const sidebars = {
       type: 'category',
       label: 'Introduction to Physical AI',
       items: [
-        'intro-physical-ai/what-is-physical-ai',
+        'introduction-to-physical-ai/introduction',
+        'introduction-to-physical-ai/what-is-physical-ai',
+        'introduction-to-physical-ai/embodied-intelligence',
+        'introduction-to-physical-ai/historical-context-and-evolution',
+        'introduction-to-physical-ai/applications-in-humanoid-robotics',
+        'introduction-to-physical-ai/challenges-and-future-directions',
       ],
     },
     {
       type: 'category',
       label: 'Module 1: The Robotic Nervous System (ROS 2)',
       items: [
-        'module1/what-is-physical-ai',
-        'module1/embodied-intelligence',
         'module1/sensors-and-humanoid-basics',
         'module1/hands-on-simulated-environment',
       ],
     },
     {
       type: 'category',
-      label: 'Module 2: The Digital Twin',
+      label: 'Module 2: The Digital Twin (Gazebo & Unity)',
       items: [
         'module2/ros2-basics',
         'module2/rclpy-python-agents',
@@ -47,7 +50,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Module 3: The AI-Robot Brain',
+      label: 'Module 3: The AI-Robot Brain (NVIDIA Isaac)',
       items: [
         'module3/gazebo-simulation',
         'module3/unity-environments',

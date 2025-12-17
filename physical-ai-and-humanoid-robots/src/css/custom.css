@@ -7,13 +7,13 @@
 /* You can override the default Infima variables here. */
 :root {
   /* -- Modern Emerald Palette -- */
-  --ifm-color-primary: #0D9488; /* Richer Teal/Emerald */
-  --ifm-color-primary-dark: #0B7A6F;
-  --ifm-color-primary-darker: #096B61;
-  --ifm-color-primary-darkest: #075249;
-  --ifm-color-primary-light: #1FBCAE;
-  --ifm-color-primary-lighter: #3ED4C8;
-  --ifm-color-primary-lightest: #62EBE0;
+  --ifm-color-primary: #2563EB; /* Richer Teal/Emerald */
+  --ifm-color-primary-dark: #1D4ED8;
+  --ifm-color-primary-darker: #1E40AF;
+  --ifm-color-primary-darkest: #1E3A8A;
+  --ifm-color-primary-light: #3B82F6;
+  --ifm-color-primary-lighter: #60A5FA;
+  --ifm-color-primary-lightest: #93C5FD;
 
   --ifm-code-font-size: 95%;
   
