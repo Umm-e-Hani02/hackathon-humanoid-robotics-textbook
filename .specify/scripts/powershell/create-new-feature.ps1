@@ -6,7 +6,6 @@ param(
     [string]$ShortName,
     [int]$Number = 0,
     [switch]$Help,
-    [Parameter(ValueFromRemainingArguments = $true)]
     [string[]]$FeatureDescription
 )
 $ErrorActionPreference = 'Stop'
@@ -292,4 +291,3 @@ if ($Json) {
     Write-Output "HAS_GIT: $hasGit"
     Write-Output "SPECIFY_FEATURE environment variable set to: $branchName"
 }
-
