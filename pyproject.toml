@@ -1,0 +1,13 @@
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "--strict-markers --ignore=physical-ai-and-humanoid-robots"
+pythonpath = ["."]
+testpaths = [
+    "src",
+    "tests",
+]
+markers = [
+    "unit",
+    "integration",
+    "e2e",
+]

@@ -1,0 +1,7 @@
+cohere
+qdrant-client
+requests
+beautifulsoup4
+python-dotenv
+unstructured
+langchain-text-splitters
