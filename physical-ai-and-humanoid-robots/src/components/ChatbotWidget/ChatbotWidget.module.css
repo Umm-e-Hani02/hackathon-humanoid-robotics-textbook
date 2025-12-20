@@ -1,0 +1,96 @@
+.chatbotIcon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: #6c757d; /* Neutral background color */
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Softer shadow */
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out;
+}
+
+.chatbotIcon:hover {
+  transform: scale(1.05);
+}
+
+.chatbotWindow {
+  position: fixed;
+  bottom: 90px; /* Adjust based on icon size and desired spacing */
+  right: 20px;
+  width: 350px;
+  height: 450px;
+  background-color: white;
+  border-radius: 15px; /* More rounded corners */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Softer, more prominent shadow */
+  display: flex;
+  flex-direction: column;
+  z-index: 999;
+  overflow: hidden; /* Ensure content respects border-radius */
+  transition: all 0.3s ease-in-out;
+}
+
+/* The chatHeader styles are removed as per requirement */
+
+.messageArea {
+  flex-grow: 1;
+  padding: 15px;
+  overflow-y: auto;
+  background-color: #fdfdfd;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.inputArea {
+  display: flex;
+  padding: 10px 15px;
+  background-color: #f8f9fa;
+}
+
+.inputArea input {
+  flex-grow: 1;
+  border: 1px solid #ced4da;
+  border-radius: 20px;
+  padding: 8px 15px;
+  margin-right: 10px;
+  outline: none;
+}
+
+.inputArea button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 15px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.inputArea button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .chatbotIcon {
+    width: 45px;
+    height: 45px;
+    bottom: 15px;
+    right: 15px;
+    font-size: 20px;
+  }
+
+  .chatbotWindow {
+    width: 90vw; /* Take up most of the viewport width */
+    height: 70vh; /* Take up most of the viewport height */
+    bottom: 70px; /* Adjust based on icon size and desired spacing */
+    right: 5vw; /* Center it roughly */
+    left: 5vw;
+  }
+}
