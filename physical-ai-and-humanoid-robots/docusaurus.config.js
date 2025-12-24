@@ -70,9 +70,13 @@ const config = {
 
     customFields: {
 
-      apiUrl: 'http://localhost:8000/agent/chat',
+  
 
-    },
+          apiUrl: process.env.API_URL || 'http://localhost:8000/agent/chat',
+
+  
+
+        },
 
   
 
