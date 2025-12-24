@@ -41,5 +41,58 @@ Not using SSH:
 GIT_USER=<Your GitHub username> yarn deploy
 ```
 
-If you are using GitHub pages for hosting, this command is a convenient way to
-build the website and push to the `gh-pages` branch.
+
+## RAG Agent Backend
+
+This project includes a FastAPI backend for the RAG agent.
+
+### Prerequisites
+
+- An active backend virtual environment (e.g., activated via `backend/.venv/Scripts/Activate.ps1`).
+- A running Qdrant instance accessible via the URL and API key configured in your `.env` file (`QDRANT_URL`, `QDRANT_API_KEY`).
+- The Qdrant collection specified by `QDRANT_COLLECTION_NAME` (default: `physical-ai-book-rag`) must exist and be populated with data.
+
+### How to Run
+
+1.  **Activate your backend virtual environment**:
+    ```bash
+    backend\.venv\Scripts\Activate.ps1
+    ```
+2.  **Ensure Qdrant is running and populated**.
+3.  **Run the FastAPI application**:
+    ```bash
+    uvicorn backend.main:app --reload
+    ```
+
+The application will be available at `http://127.0.0.1:8000`.
+
+You can interact with the RAG agent by sending a POST request to the `/agent/chat` endpoint with a JSON payload like:
+```json
+{
+  "text": "What are the core principles of Physical AI?"
+}
+```
+
+## Retrieval Validation Tests
+
+This project includes a suite of integration tests to validate the retrieval quality of the RAG pipeline against the Qdrant vector store. These tests perform similarity searches using sample queries and assert on the structure and metadata of the retrieved results.
+
+### Prerequisites
+
+- An active backend virtual environment (e.g., activated via `backend/.venv/Scripts/Activate.ps1`).
+- A running Qdrant instance accessible via the URL and API key configured in your `.env` file (`QDRANT_URL`, `QDRANT_API_KEY`).
+- The Qdrant collection specified by `QDRANT_COLLECTION_NAME` (default: `physical-ai-book-rag`) must exist and be populated with data.
+
+### How to Run
+
+1.  **Activate your backend virtual environment**:
+    ```bash
+    backend\.venv\Scripts\Activate.ps1
+    ```
+2.  **Ensure Qdrant is running and populated**.
+3.  **Execute the tests using Pytest**:
+    ```bash
+    pytest tests/integration/test_retrieval_validation.py
+    ```
+
+The test output will include detailed logs for each query, showing the retrieved chunk IDs, relevance scores, and metadata.

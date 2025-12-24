@@ -6,40 +6,83 @@
 
 import {themes as prismThemes} from 'prism-react-renderer';
 
+
+
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
+
+
 /** @type {import('@docusaurus/types').Config} */
+
 const config = {
+
   title: 'Physical AI and Humanoid Robots',
+
   tagline: 'Learn to build, simulate, and control intelligent humanoid robots.',
+
   favicon: 'img/logo.png',
 
+
+
   // Set the production url of your site here
+
   url: 'https://Umm-e-Hani02.github.io',
+
   // Set the /<baseUrl>/ pathname under which your site is served
+
   // For GitHub pages deployment, it is often '/<projectName>/'
+
   baseUrl: '/hackathon-humanoid-robotics-textbook/',
+
   trailingSlash: false,
 
+
+
   // GitHub pages deployment config.
+
   // If you aren't using GitHub pages, you don't need these.
+
   organizationName: 'Umm-e-Hani02', // Usually your GitHub org/user name.
+
   projectName: 'hackathon-humanoid-robotics-textbook', // Usually your repo name.
+
+
 
   onBrokenLinks: 'throw',
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
-  },
+  
 
-  presets: [
-    [
-      'classic',
-      /** @type {import('@docusaurus/preset-classic').Options} */
+  // Even if you don't use internationalization, you can use this field to set
+
+    // useful metadata like html lang. For example, if your site is Chinese, you
+
+    // may want to replace "en" with "zh-Hans".
+
+    i18n: {
+
+      defaultLocale: 'en',
+
+      locales: ['en'],
+
+    },
+
+  
+
+    customFields: {
+
+      apiUrl: 'http://localhost:8000/agent/chat',
+
+    },
+
+  
+
+    presets: [
+
+      [
+
+        'classic',
+
+        /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
           sidebarPath: './sidebars.js',
@@ -76,6 +119,7 @@ const config = {
             position: 'left',
             label: 'Book',
           },
+
 
           {
             href: 'https://github.com/Umm-e-Hani02/hackathon-humanoid-robotics-textbook',

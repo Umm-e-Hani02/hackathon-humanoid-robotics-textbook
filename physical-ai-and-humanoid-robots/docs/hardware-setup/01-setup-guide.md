@@ -63,34 +63,6 @@ NVIDIA Jetson modules are powerful, energy-efficient embedded computers designed
 5.  **Sensor Connections**:
     *   Connect your robot's sensors (cameras, LiDAR, IMU) to the Jetson via USB, MIPI CSI, or other available interfaces. Ensure the necessary drivers and ROS 2 nodes are installed to read data from these sensors.
 
-### Jetson Considerations:
 
-*   **Power Management**: Manage power modes to optimize performance or battery life.
-*   **Heat Dissipation**: Active cooling solutions (fans, heatsinks) are often necessary for sustained performance.
-*   **Edge AI**: Jetson enables your robot to make real-time decisions directly on the device, crucial for autonomy.
 
-## 3. Cloud-Based Development and Simulation
 
-Cloud platforms offer scalable computing resources, enabling large-scale simulations, distributed training of AI models, and collaborative development.
-
-### Use Cases:
-
-*   **Distributed Reinforcement Learning**: Train AI models for complex robot behaviors across many instances simultaneously.
-*   **Large-scale Simulation**: Run hundreds or thousands of robot simulations in parallel for rapid iteration and data generation (e.g., using NVIDIA Omniverse Cloud or AWS RoboMaker).
-*   **Remote Development**: Access powerful virtual machines with pre-configured robotics environments from anywhere.
-*   **GPU Training**: Leverage high-end GPUs (e.g., NVIDIA A100, H100) for deep learning model training that surpasses local workstation capabilities.
-
-### Key Cloud Services:
-
-*   **Compute**: AWS EC2, Google Cloud Compute Engine, Azure Virtual Machines (with GPU instances).
-*   **Storage**: S3, GCS, Azure Blob Storage for datasets and model checkpoints.
-*   **Containerization**: Kubernetes, Docker Swarm for orchestrating containerized robotics applications.
-*   **Robotics-Specific Services**: AWS RoboMaker (for simulation and fleet management), NVIDIA Omniverse Cloud (for cloud-based simulation and collaboration).
-
-### Setup Considerations:
-
-*   **Cost Management**: Cloud resources can be expensive; monitor usage carefully.
-*   **Data Transfer**: Be mindful of data ingress/egress costs and latency.
-*   **Security**: Implement robust security measures for your cloud resources.
-
-Choosing the right hardware setup depends on the phase of your project (development, deployment, training) and your specific computational demands. Often, a combination of these (e.g., workstation for daily development, Jetson for on-robot deployment, cloud for large-scale training) provides the most effective workflow.

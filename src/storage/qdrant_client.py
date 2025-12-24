@@ -4,9 +4,13 @@ from src.utils.env_loader import get_env_variable, load_env_variables
 class QdrantManager:
     def __init__(self):
         load_env_variables()  # Ensure environment variables are loaded
+        
         self.qdrant_url = get_env_variable("QDRANT_URL")
         self.qdrant_api_key = get_env_variable("QDRANT_API_KEY")
         self.collection_name = get_env_variable("QDRANT_COLLECTION_NAME", "physical-ai-book-rag")
+        
+        print(f"Connecting to Qdrant at {self.qdrant_url}.")
+
         self.client = QdrantClient(
             url=self.qdrant_url,
             api_key=self.qdrant_api_key,
@@ -40,6 +44,29 @@ class QdrantManager:
             return self.client.get_collection(collection_name=self.collection_name).config
         print(f"Collection '{self.collection_name}' does not exist.")
         return None
+
+    def get_client(self):
+        """
+        Returns the Qdrant client instance.
+        """
+        return self.client
+
+    def search(self, query_vector: list[float], limit: int = 5):
+        """
+        Searches the collection for a given query vector.
+
+        Args:
+            query_vector (list[float]): The query vector.
+            limit (int): The maximum number of results to return.
+
+        Returns:
+            list[models.ScoredPoint]: A list of scored points.
+        """
+        return self.client.search(
+            collection_name=self.collection_name,
+            query_vector=query_vector,
+            limit=limit,
+        )
 
     def delete_collection(self):
         """

@@ -1,0 +1,12 @@
+# Ignore artifacts:
+build/
+dist/
+.docusaurus/
+node_modules/
+.venv/
+venv/
+__pycache__/
+
+# Ignore specific files:
+*.log
+*.sqlite
