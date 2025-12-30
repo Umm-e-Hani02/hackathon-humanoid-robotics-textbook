@@ -1,0 +1,85 @@
+openapi: 3.0.0
+info:
+  title: RAG Chatbot Agent API
+  version: 1.0.0
+  description: API for the RAG Chatbot Agent to answer queries using embedded book data.
+
+paths:
+  /chat:
+    post:
+      summary: Send a user query to the RAG chatbot agent
+      operationId: chatWithAgent
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserQuery'
+      responses:
+        '200':
+          description: Successful response from the chatbot
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatbotResponse'
+        '400':
+          description: Invalid input
+        '500':
+          description: Internal server error
+
+components:
+  schemas:
+    UserQuery:
+      type: object
+      properties:
+        text:
+          type: string
+          description: The user's question or statement.
+          example: "What are the core principles of Physical AI?"
+      required:
+        - text
+
+    RetrievedSection:
+      type: object
+      properties:
+        text:
+          type: string
+          description: The content of the retrieved section.
+          example: "Physical AI involves the integration of AI with robotic systems..."
+        score:
+          type: number
+          format: float
+          description: Similarity score from the vector database.
+          example: 0.85
+        metadata:
+          type: object
+          description: Contextual information about the book section.
+          properties:
+            chapter_title:
+              type: string
+              example: "Introduction to Physical AI"
+            page_number:
+              type: integer
+              example: 15
+            source_url:
+              type: string
+              format: uri
+              example: "https://example.com/book/chapter1"
+
+    ChatbotResponse:
+      type: object
+      properties:
+        answer:
+          type: string
+          description: The natural language response to the user's query.
+          example: "The core principles of Physical AI involve..."
+        sources:
+          type: array
+          description: References to the Retrieved Sections used to formulate the answer.
+          items:
+            $ref: '#/components/schemas/RetrievedSection'
+        confidence_score:
+          type: number
+          format: float
+          description: An indicator of the agent's confidence in its answer.
+          example: 0.92

@@ -1,0 +1,116 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "RAG Chatbot API",
+    "version": "1.0.0",
+    "description": "API for interacting with the RAG chatbot to query book content."
+  },
+  "paths": {
+    "/chat": {
+      "post": {
+        "summary": "Send a user query to the RAG chatbot and get a response.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "query": {
+                    "type": "string",
+                    "description": "The user's natural language query about the book content.",
+                    "example": "What is Physical AI?"
+                  },
+                  "conversation_id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "Optional: A unique identifier for the conversation session, allowing the backend to maintain context if desired.",
+                    "nullable": true
+                  }
+                },
+                "required": ["query"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response from the chatbot.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "response": {
+                      "type": "string",
+                      "description": "The chatbot's natural language response, grounded in book content.",
+                      "example": "Physical AI refers to the integration of artificial intelligence with physical systems, often embodied in robots, to enable intelligent perception, reasoning, and action in the real world."
+                    },
+                    "conversation_id": {
+                      "type": "string",
+                      "format": "uuid",
+                      "description": "The unique identifier for the conversation session."
+                    },
+                    "is_grounded": {
+                      "type": "boolean",
+                      "description": "Indicates if the response is directly based on retrieved book content.",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request, e.g., missing query.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "detail": {
+                      "type": "string",
+                      "example": "Query cannot be empty."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "detail": {
+                      "type": "string",
+                      "example": "An unexpected error occurred on the server."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service unavailable or unable to provide an answer.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "response": {
+                      "type": "string",
+                      "example": "I can only answer questions related to the book content. Please try rephrasing or asking a different question."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
