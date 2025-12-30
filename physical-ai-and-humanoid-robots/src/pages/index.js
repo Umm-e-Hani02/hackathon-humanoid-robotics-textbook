@@ -4,8 +4,8 @@ import Layout from '@theme/Layout';
 
 import HeroSection from '../components/NewHomepage/HeroSection';
 import Modules from '../components/NewHomepage/Modules';
-import KeyFeatures from '../components/NewHomepage/KeyFeatures';
 import WhatYouWillLearn from '../components/NewHomepage/WhatYouWillLearn';
+import KeyFeatures from '../components/NewHomepage/KeyFeatures';
 import WhyThisBook from '../components/NewHomepage/WhyThisBook';
 import CtaSection from '../components/NewHomepage/CtaSection';
 
@@ -20,8 +20,8 @@ export default function Home() {
     >
       <main>
         <HeroSection />
-        {/* <KeyFeatures /> */}
         <Modules />
+        <KeyFeatures />
         <WhatYouWillLearn />
         <WhyThisBook />
         <CtaSection />

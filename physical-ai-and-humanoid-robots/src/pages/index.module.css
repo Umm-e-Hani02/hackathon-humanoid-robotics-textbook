@@ -1,19 +1,7 @@
 /* General Section Styling */
 .section {
-  padding: 6rem 2rem;
+  padding: 4rem 2rem;
   text-align: center;
-  border-bottom: 1px solid var(--ifm-color-secondary-lightest);
-}
-
-.darkSection {
-  background-color: #1A1D24; /* Charcoal */
-  color: #E5E9F0;
-  border-bottom: 1px solid #2E3440;
-}
-
-.lightSection {
-  background-color: #F8F9FA; /* Off-white */
-  color: #2E3440;
 }
 
 .section:last-child {
@@ -24,194 +12,16 @@
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
-  color: var(--ifm-color-secondary); /* Teal */
-}
-
-/* Hero Section */
-.hero {
-  padding: 8rem 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 60vh;
-  text-align: center;
-  background: linear-gradient(170deg, #1A1D24 60%, #2E3440 100%);
-}
-
-.heroTitle {
-  font-size: 4rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
-  line-height: 1.2;
-}
-
-.heroSubtitle {
-  font-size: 1.5rem;
-  font-weight: 300;
-  max-width: 600px;
-  margin: 0 auto 2.5rem;
-}
-
-/* Buttons */
-.buttons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.ctaButton {
-  background-color: var(--ifm-color-primary); /* Lavender */
-  color: #FFFFFF;
-  border-radius: 50px;
-  padding: 1rem 2.5rem;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
-
-.ctaButton:hover {
-  background-color: var(--ifm-color-primary-dark);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-}
-
-/* Problem -> Solution Section */
-.problemSolution {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  text-align: left;
-  max-width: 960px;
-  margin: 0 auto;
-}
-
-.problemSolution p {
-  line-height: 1.8;
-}
-
-/* Highlights Section */
-.highlightsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.highlightCard {
-  background-color: #FFFFFF;
-  padding: 2.5rem;
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-  border: 1px solid #E5E9F0;
-}
-
-[data-theme='dark'] .highlightCard {
-  background-color: #2E3440;
-  border-color: #4C566A;
-}
-
-.highlightCard:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
-}
-
-.cardHeading {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: var(--ifm-color-primary); /* Lavender */
-}
-
-/* Key Ideas Section */
-.keyIdeasList {
-  list-style: none;
-  padding: 0;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.keyIdeaItem {
-  background-color: #FFFFFF;
-  padding: 1.5rem 2rem;
-  margin-bottom: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
-  text-align: left;
-  font-size: 1.1rem;
-  border-left: 5px solid var(--ifm-color-primary); /* Lavender accent */
-  transition: all 0.3s ease;
-}
-
-[data-theme='dark'] .keyIdeaItem {
-  background-color: #2E3440;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  border-left-color: var(--ifm-color-primary);
-}
-
-.keyIdeaItem:hover {
-  transform: translateX(5px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+  color: var(--ifm-color-primary);
 }
 
 /* Responsive adjustments */
-@media (max-width: 996px) {
-  .problemSolution {
-    grid-template-columns: 1fr;
-  }
-}
-
 @media (max-width: 768px) {
-  .heroTitle {
-    font-size: 3rem;
-  }
-
-  .heroSubtitle {
-    font-size: 1.2rem;
+  .section {
+    padding: 3rem 1rem;
   }
 
   .sectionHeading {
     font-size: 2rem;
-  }
-
-  .section {
-    padding: 4rem 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .heroTitle {
-    font-size: 2.5rem;
-  }
-
-  .heroSubtitle {
-    font-size: 1rem;
-  }
-
-  .ctaButton {
-    padding: 0.8rem 1.8rem;
-    font-size: 0.9rem;
-  }
-
-  .buttons {
-    flex-direction: column;
-  }
-
-  .problemSolution {
-    gap: 2rem;
-  }
-
-  .highlightCard {
-    padding: 2rem;
-  }
-
-  .cardHeading {
-    font-size: 1.3rem;
-  }
-
-  .keyIdeaItem {
-    padding: 1.2rem 1.5rem;
-    font-size: 1rem;
   }
 }

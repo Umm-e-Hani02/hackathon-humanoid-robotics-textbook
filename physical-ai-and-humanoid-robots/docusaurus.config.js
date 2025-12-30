@@ -24,7 +24,7 @@ const config = {
 
 
 
-  // Set the production url of your site here
+  // Set the production url of your site here``
 
   url: 'https://Umm-e-Hani02.github.io',
 
@@ -70,11 +70,13 @@ const config = {
 
     customFields: {
 
-  
 
-          apiUrl: process.env.API_URL || 'http://localhost:8000/agent/chat',
 
-  
+          // Replace 'YOUR_DEPLOYED_BACKEND_URL' with the actual URL after deployment
+          // Example: 'https://your-app-name.onrender.com/agent/chat'
+          apiUrl: process.env.API_URL || 'YOUR_DEPLOYED_BACKEND_URL/agent/chat',
+
+
 
         },
 
@@ -123,11 +125,14 @@ const config = {
             position: 'left',
             label: 'Book',
           },
-
-
+          // {
+          //   to: '/#',
+          //   label: 'Home',
+          //   position: 'left',
+          // },
           {
             href: 'https://github.com/Umm-e-Hani02/hackathon-humanoid-robotics-textbook',
-            label: 'GitHub',
+            label: 'Github',
             position: 'right',
           },
         ],

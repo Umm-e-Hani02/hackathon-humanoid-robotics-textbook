@@ -1,76 +1,277 @@
 /**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
+ * Tech-oriented styling for the homepage components.
+ * This file provides additional styling for homepage-specific elements
+ * following a clean, minimalist, tech-oriented design with the new color scheme.
  */
 
-/*
-  Credits for the design concepts and color schemes go to the user who
-  provided the detailed request. The implementation below translates
-  that vision into CSS.
-*/
-
 :root {
-  --ifm-font-family-base: 'Inter', sans-serif;
+  --ifm-font-family-base: 'Roboto', 'Open Sans', sans-serif;
 }
 
 @supports (font-variation-settings: normal) {
   :root {
-    --ifm-font-family-base: 'Inter var', sans-serif;
+    --ifm-font-family-base: 'Roboto', sans-serif;
   }
 }
 
-
-
 /* Dark Theme */
 [data-theme='dark'] {
-  --ifm-card-shadow: none;
-  --ifm-card-border-color: rgba(220, 189, 227, 0.15);
-  --ifm-button-color: #2b1642;
-  --ifm-footer-background-color: transparent;
-  --ifm-navbar-shadow: none;
-}
-
-/* General Styles */
-.button--primary {
-  font-weight: 600;
-  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
-  border-radius: var(--ifm-button-border-radius);
-}
-
-.button--primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(76, 90, 158, 0.3);
-}
-
-[data-theme='dark'] .button--primary:hover {
-  box-shadow: 0 8px 25px rgba(76, 90, 158, 0.2);
+  --ifm-card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+  --ifm-card-border-color: var(--custom-border-color);
+  --ifm-button-color: #ffffff;
+  --ifm-footer-background-color: var(--ifm-background-color);
+  --ifm-navbar-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
 .main-wrapper {
   background: var(--ifm-background-color);
+  min-height: 100vh;
 }
 
 .footer {
   border-top: 1px solid var(--ifm-card-border-color, rgba(0,0,0,0.1));
 }
 
-/* Added for heading consistency */
+/* Tech-oriented homepage heading styling */
 .section-title {
-  font-size: 3rem; /* Increased font size */
-  font-weight: 800; /* Made bolder */
-  margin-bottom: 1.5rem; /* Increased spacing */
-  padding-bottom: 0.5rem; /* Padding for the border */
-  border-bottom: 3px solid var(--ifm-color-primary); /* Prominent bottom border */
-  display: inline-block; /* To make border fit content */
+  font-size: 2.25rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  padding-bottom: 0.75rem;
+  display: block;
   text-align: center;
+  color: var(--custom-headings-color);
+  position: relative;
+  letter-spacing: -0.01em;
+  font-family: 'Montserrat', 'Poppins', sans-serif;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: var(--ifm-color-primary);
+  border-radius: 1px;
 }
 
 .item-title {
   font-size: 1.5rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--custom-headings-color);
+  font-family: 'Montserrat', 'Poppins', sans-serif;
+}
+
+/* Tech-oriented card styling for homepage sections */
+.homepage-section {
+  background-color: var(--custom-card-background);
+  border: 1px solid var(--custom-border-color);
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 2.5rem;
+  box-shadow: var(--custom-card-shadow);
+  transition: all 0.2s ease;
+  overflow: hidden;
+}
+
+.homepage-section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] .homepage-section {
+  border: 1px solid var(--custom-border-color);
+}
+
+/* Tech-oriented list styling */
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.feature-list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 1.05rem;
+  color: var(--custom-body-text-color);
+  padding: 0.5rem 0;
+  transition: transform 0.1s ease;
+  font-family: 'Roboto', 'Open Sans', sans-serif;
+}
+
+.feature-list-item:hover {
+  transform: translateX(3px);
+}
+
+.feature-icon {
+  flex-shrink: 0;
+  margin-top: 6px;
+  color: var(--ifm-color-primary);
+  width: 20px;
+  height: 20px;
+}
+
+/* Tech-oriented button container */
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.button {
+  border-radius: 6px;
+  font-weight: 500;
+  padding: 10px 20px;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  border: 1px solid transparent;
+  box-shadow: var(--custom-card-shadow);
+  background-color: var(--ifm-color-gray-100);
+  color: var(--custom-body-text-color);
+  font-size: 0.95rem;
+}
+
+.button--primary {
+  background: var(--ifm-color-primary);
+  color: white;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.button--primary:hover {
+  background: var(--ifm-color-primary-darker);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+.button--secondary {
+  background-color: transparent;
+  color: var(--ifm-color-secondary);
+  border: 1px solid var(--ifm-color-secondary);
+}
+
+.button--secondary:hover {
+  background-color: rgba(31, 41, 55, 0.08); /* Dark grey with opacity */
+  border-color: var(--ifm-color-secondary-light);
+  transform: translateY(-1px);
+}
+
+.button--lg {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+}
+
+/* Hero section specific styling */
+.hero {
+  padding: 4rem 0 2.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--ifm-color-primary);
+}
+
+.hero-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title {
+  font-size: 2.75rem;
+  font-weight: 700;
+  color: var(--custom-headings-color);
+  margin-bottom: 1.25rem;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  font-family: 'Montserrat', 'Poppins', sans-serif;
+}
+
+.hero-subtitle {
+  font-size: 1.15rem;
+  color: var(--custom-muted-text-color);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Roboto', 'Open Sans', sans-serif;
+}
+
+[data-theme='dark'] .hero-title {
+  color: var(--custom-headings-color);
+}
+
+/* Tech-oriented section layout */
+.section {
+  padding: 3rem 0;
+  background-color: var(--ifm-background-color);
+}
+
+.section-alt {
+  background-color: var(--ifm-background-color);
+}
+
+[data-theme='dark'] .section-alt {
+  background-color: var(--ifm-background-color);
+}
+
+/* Tech-oriented grid layout */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+/* Tech-oriented call-to-action section */
+.cta-section {
+  text-align: center;
+  padding: 3rem 0;
+  background-color: var(--ifm-color-gray-100);
+  border-radius: 8px;
+  margin: 2.5rem 0;
+}
+
+[data-theme='dark'] .cta-section {
+  background-color: var(--ifm-color-gray-800);
+}
+
+.cta-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--custom-headings-color);
+  font-family: 'Montserrat', 'Poppins', sans-serif;
+}
+
+.cta-subtitle {
+  font-size: 1.1rem;
+  color: var(--custom-muted-text-color);
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+  font-family: 'Roboto', 'Open Sans', sans-serif;
 }
 
 

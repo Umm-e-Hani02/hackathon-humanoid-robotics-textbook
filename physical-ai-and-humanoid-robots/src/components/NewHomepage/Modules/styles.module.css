@@ -1,68 +1,78 @@
 /**
- * CSS for the Modules Section of the new homepage.
+ * Tech-oriented CSS for the Modules Section of the new homepage.
  * Uses variables defined in src/css/custom.css for theming.
  */
 
 .modulesSection {
-  padding: 4rem 0;
-}
-
-.sectionTitle {
-  text-align: center;
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 3rem;
-  color: var(--custom-headings-color);
+  padding: 3rem 0;
 }
 
 .modulesGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  gap: 1.5rem;
+  margin-top: 2rem;
 }
 
 .moduleCard {
   background-color: var(--custom-card-background);
   border: 1px solid var(--custom-border-color);
-  border-radius: 12px;
-  padding: 1.5rem;
+  border-radius: 8px;
+  padding: 1.75rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  transition: all 0.3s ease;
   box-shadow: var(--custom-card-shadow);
+  height: 100%;
 }
 
 [data-theme='dark'] .moduleCard {
   border: 1px solid var(--custom-border-color);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
 }
 
 .moduleCard:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 15px rgba(0,0,0,0.07);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-color: var(--ifm-color-primary);
 }
 
 [data-theme='dark'] .moduleCard:hover {
   border-color: var(--ifm-color-primary);
-  box-shadow: none;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
 .cardContent {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .cardTitle {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 0.75rem;
   color: var(--custom-headings-color);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Montserrat', 'Poppins', sans-serif;
 }
 
 .cardDescription {
-  color: var(--custom-muted-text-color);
+  color: var(--custom-body-text-color);
   line-height: 1.6;
+  margin-bottom: 1.25rem;
+  font-size: 0.95rem;
+  font-family: 'Roboto', 'Open Sans', sans-serif;
 }
 
 .cardActions {
-  text-align: right;
+  text-align: center;
+  margin-top: auto;
+}
+
+@media (max-width: 768px) {
+  .modulesGrid {
+    grid-template-columns: 1fr;
+  }
 }

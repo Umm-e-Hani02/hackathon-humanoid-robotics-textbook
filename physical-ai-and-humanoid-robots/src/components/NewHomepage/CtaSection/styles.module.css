@@ -1,17 +1,43 @@
 .ctaSection {
-  padding: 6rem 0;
+  padding: 5rem 0;
+  text-align: center;
+  background-color: var(--ifm-background-color);
+  margin: 4rem 0;
 }
 
-.ctaTitle {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: var(--ifm-h2-color);
+[data-theme='dark'] .ctaSection {
 }
 
 .ctaSubtitle {
   font-size: 1.25rem;
-  margin: 0 auto 2rem;
+  margin: 1.5rem auto 2.5rem;
   max-width: 600px;
-  color: var(--ifm-font-color-secondary);
+  color: var(--custom-body-text-color);
+  font-family: 'Roboto', 'Open Sans', sans-serif;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.buttonContainer .button {
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .ctaSection {
+    padding: 3rem 1rem;
+  }
+
+  .ctaSubtitle {
+    font-size: 1.1rem;
+  }
+
+  .buttonContainer {
+    flex-direction: column;
+    align-items: center;
+  }
 }

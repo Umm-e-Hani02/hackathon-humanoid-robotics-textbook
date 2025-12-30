@@ -4,24 +4,24 @@ import Link from '@docusaurus/Link';
 
 const ModuleList = [
   {
-    title: 'Module 1: Foundations of Physical AI',
-    link: '/docs/introduction-to-physical-ai/what-is-physical-ai',
-    description: 'Start with the core principles of embodied intelligence, sensors, and actuators.',
+    title: 'Module 1: The Robotic Nervous System (ROS 2)',
+    link: '/docs/module1/sensors-and-humanoid-basics',
+    description: 'Master the Robot Operating System for building robust, distributed robotic applications.',
   },
   {
-    title: 'Module 2: ROS 2 and Python Agents',
+    title: 'Module 2: The Digital Twin (Gazebo & Unity)',
     link: '/docs/module2/ros2-basics',
-    description: 'Learn the Robot Operating System (ROS 2) to create professional-grade control systems.',
+    description: 'Create accurate virtual replicas of physical robots for testing and validation.',
   },
   {
-    title: 'Module 3: Advanced Simulation',
+    title: 'Module 3: The AI-Robot Brain (NVIDIA Isaac)',
     link: '/docs/module3/gazebo-simulation',
-    description: 'Master virtual testing in Gazebo and Unity to accelerate development and validation.',
+    description: 'Implement intelligent perception, navigation, and decision-making systems.',
   },
   {
-    title: 'Module 4: AI for Humanoids',
+    title: 'Module 4: Vision-Language-Action (VLA)',
     link: '/docs/module4/isaac-sdk-and-sim',
-    description: 'Implement navigation and perception using NVIDIA Isaac Sim and other advanced tools.',
+    description: 'Build multimodal AI systems that integrate vision, language, and robotic control.',
   },
 ];
 
@@ -36,7 +36,7 @@ function ModuleCard({ title, description, link }) {
         <Link
           className="button button--primary"
           to={link}>
-          Explore
+          Learn More
         </Link>
       </div>
     </div>
@@ -47,7 +47,7 @@ export default function Modules() {
   return (
     <section className={styles.modulesSection}>
       <div className="container">
-        <h2 className="section-title">Explore the Modules</h2>
+        <h2 className="section-title">Explore The Modules</h2>
         <div className={styles.modulesGrid}>
           {ModuleList.map((props, idx) => (
             <ModuleCard key={idx} {...props} />

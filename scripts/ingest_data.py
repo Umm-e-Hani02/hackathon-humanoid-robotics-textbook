@@ -11,27 +11,41 @@ def get_all_urls(base_url: str) -> list[str]:
     """
     Crawls the base URL to find all relevant book URLs.
     """
-    response = requests.get(base_url)
-    soup = BeautifulSoup(response.content, 'html.parser')
-    
-    # Find all links within the main content area that point to documentation pages
-    # This might need to be adjusted based on the specific HTML structure of the website
-    # Looking for links under a 'docs' path, typically within a navigation or main content div
-    
-    all_links = set()
-    for link in soup.find_all('a', href=True):
-        href = link['href']
-        # Filter for relevant documentation links. Adjust this logic based on the actual site structure.
-        if href.startswith('/hackathon-humanoid-robotics-textbook/docs/'):
-            full_url = f"https://umm-e-hani02.github.io{href}"
-            all_links.add(full_url)
-        elif href.startswith('/hackathon-humanoid-robotics-textbook/'):
-            # Also capture direct links if they are within the book structure
-            if not any(ext in href for ext in ['.png', '.jpg', '.jpeg', '.gif', '.svg', '.css', '.js', '.ico']):
-                full_url = f"https://umm-e-hani02.github.io{href}"
+    try:
+        response = requests.get(base_url)
+        response.raise_for_status()
+        soup = BeautifulSoup(response.content, 'html.parser')
+
+        # Find all links within the main content area that point to documentation pages
+        # This might need to be adjusted based on the specific HTML structure of the website
+        # Looking for links under a 'docs' path, typically within a navigation or main content div
+
+        all_links = set()
+        for link in soup.find_all('a', href=True):
+            href = link['href']
+            # Normalize href to handle relative URLs properly
+            if href.startswith('/hackathon-humanoid-robotics-textbook/docs/'):
+                full_url = f"https://Umm-e-Hani02.github.io{href}"
                 all_links.add(full_url)
-    
-    return list(all_links)
+            elif href.startswith('/hackathon-humanoid-robotics-textbook/'):
+                # Also capture direct links if they are within the book structure
+                if not any(ext in href.lower() for ext in ['.png', '.jpg', '.jpeg', '.gif', '.svg', '.css', '.js', '.ico', '.pdf']):
+                    full_url = f"https://Umm-e-Hani02.github.io{href}"
+                    all_links.add(full_url)
+            elif href.startswith('http') and 'hackathon-humanoid-robotics-textbook' in href:
+                # Handle absolute URLs that contain the textbook path
+                all_links.add(href)
+
+        # Filter out any non-HTML links
+        filtered_links = []
+        for link in all_links:
+            if not any(ext in link.lower() for ext in ['.png', '.jpg', '.jpeg', '.gif', '.svg', '.css', '.js', '.ico', '.pdf', '.zip', '.exe']):
+                filtered_links.append(link)
+
+        return filtered_links
+    except requests.RequestException as e:
+        print(f"Error fetching base URL {base_url}: {e}")
+        return []
 
 def extract_text_from_url(url: str) -> str:
     """
@@ -106,21 +120,36 @@ def save_chunk_to_qdrant(qdrant_client: QdrantClient, collection_name: str, chun
     """
     points = []
     for i, (chunk, embedding) in enumerate(zip(chunks, embeddings)):
+        # Generate a more reliable unique ID to avoid potential hash collisions
+        unique_id = abs(hash(f"{url}-{i}-{len(chunk)}")) % (10**10)  # Limit ID size to prevent overflow
         points.append(
             models.PointStruct(
-                id=abs(hash(f"{url}-{i}")), # Generate a unique ID for each chunk
+                id=unique_id, # Generate a unique ID for each chunk
                 vector=embedding,
                 payload={"text": chunk, "source_url": url, "chunk_id": i},
             )
         )
-    
+
     if points:
-        qdrant_client.upsert(
-            collection_name=collection_name,
-            points=points,
-            wait=True,
-        )
-        print(f"Saved {len(points)} chunks from {url} to Qdrant.")
+        try:
+            qdrant_client.upsert(
+                collection_name=collection_name,
+                points=points,
+                wait=True,
+            )
+            print(f"Saved {len(points)} chunks from {url} to Qdrant.")
+        except Exception as e:
+            print(f"Error saving chunks from {url} to Qdrant: {e}")
+            # If individual upsert fails, try one by one to identify problematic points
+            for point in points:
+                try:
+                    qdrant_client.upsert(
+                        collection_name=collection_name,
+                        points=[point],
+                        wait=True,
+                    )
+                except Exception as point_error:
+                    print(f"Failed to save point with ID {point.id}: {point_error}")
 
 async def main():
     load_dotenv()
@@ -142,8 +171,8 @@ async def main():
 
     COLLECTION_NAME = os.getenv("QDRANT_COLLECTION_NAME", "physical-ai-book-rag")
     VECTOR_SIZE = 1024  # Cohere 'embed-english-v3.0' model size
-    
-    base_url = "https://umm-e-hani02.github.io/hackathon-humanoid-robotics-textbook/"
+
+    base_url = "https://Umm-e-Hani02.github.io/hackathon-humanoid-robotics-textbook/"
     
     # 1. Create Qdrant collection
     create_collection(qdrant_client, COLLECTION_NAME, VECTOR_SIZE)

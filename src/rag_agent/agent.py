@@ -40,11 +40,11 @@ Follow these rules strictly:
                 logger.info("No relevant information found in the book.")
                 return "I could not find an answer to that question in the book."
 
-            documents = [{'title': point.payload['source_url'], 'text': point.payload['text']} for point in search_result]
+            documents = [{'title': point.payload.get('source_url', point.payload.get('source_file', 'Unknown')), 'text': point.payload['text']} for point in search_result]
             logger.info(f"Retrieved {len(documents)} chunks.")
 
             response = self.cohere_client.chat(
-                model=self.cohere_manager.get_chat_model(),
+                model="command-r-08-2024",  # Use a specific Cohere model version
                 message=query,
                 documents=documents,
                 preamble=self.system_prompt

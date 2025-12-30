@@ -4,11 +4,12 @@ from src.utils.env_loader import get_env_variable, load_env_variables
 class QdrantManager:
     def __init__(self):
         load_env_variables()  # Ensure environment variables are loaded
-        
-        self.qdrant_url = get_env_variable("QDRANT_URL")
-        self.qdrant_api_key = get_env_variable("QDRANT_API_KEY")
+
+        # Strip any whitespace from the environment variables to fix connection issues
+        self.qdrant_url = get_env_variable("QDRANT_URL").strip()
+        self.qdrant_api_key = get_env_variable("QDRANT_API_KEY").strip()
         self.collection_name = get_env_variable("QDRANT_COLLECTION_NAME", "physical-ai-book-rag")
-        
+
         print(f"Connecting to Qdrant at {self.qdrant_url}.")
 
         self.client = QdrantClient(

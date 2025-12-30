@@ -1,78 +1,37 @@
 import React from 'react';
 import styles from './styles.module.css';
-import clsx from 'clsx';
 
-const WhyThisBookList = [
-  {
-    title: 'Hands-On and Practical',
-    description: (
-      <>
-        This book is focused on practical, hands-on examples that you can build and test yourself.
-      </>
-    ),
-  },
-  {
-    title: 'Beginner-Friendly',
-    description: (
-      <>
-        We start from the basics and gradually build up to more complex topics, making it accessible for everyone.
-      </>
-    ),
-  },
-  {
-    title: 'Cutting-Edge Technologies',
-    description: (
-      <>
-        Learn the most relevant and modern tools and frameworks in the robotics industry.
-      </>
-    ),
-  },
-  {
-    title: 'Focus on Humanoid Robots',
-    description: (
-      <>
-        This book is one of the few resources specifically dedicated to the exciting field of humanoid robotics.
-      </>
-    ),
-  },
-  {
-    title: 'From Simulation to the Real World',
-    description: (
-      <>
-        The skills you learn can be applied to both simulated and physical robots.
-      </>
-    ),
-  },
-  {
-    title: 'Join a Growing Community',
-    description: (
-      <>
-        Be part of the future of AI and robotics, a field with immense potential and opportunities.
-      </>
-    ),
-  },
+const benefits = [
+  'Comprehensive coverage from foundational concepts to advanced implementation techniques',
+  'Hands-on projects and exercises to reinforce learning',
+  'Industry-relevant technologies and frameworks',
+  'Cutting-edge developments in embodied AI and humanoid robotics',
+  'Practical guidance for building real-world robotic systems'
 ];
-
-function WhyThisBookItem({title, description}) {
-  return (
-    <div className={clsx('col col--4', styles.feature)}>
-      <div className="text--center padding-horiz--md">
-        <h3 className="item-title">{title}</h3>
-        <p>{description}</p>
-      </div>
-    </div>
-  );
-}
 
 export default function WhyThisBook() {
   return (
-    <section className={styles.features}>
+    <section className={styles.whyThisBook}>
       <div className="container">
-        <h2 className="section-title">Why This Book</h2>
-        <div className="row">
-          {WhyThisBookList.map((props, idx) => (
-            <WhyThisBookItem key={idx} {...props} />
-          ))}
+        <h2 className="section-title">Why This Book?</h2>
+        <div className={styles.content}>
+          <p className={styles.description}>
+            This book bridges the gap between theoretical AI concepts and practical robotics implementation.
+            With a focus on humanoid robots, you'll learn to build systems that perceive, reason, and act
+            in the physical world using state-of-the-art tools and methodologies.
+          </p>
+
+          <div className={styles.benefits}>
+            <h3 className={styles.benefitsTitle}>Key Points:</h3>
+            <ul className={styles.benefitsList}>
+              {benefits.map((benefit, index) => (
+                <li key={index} className={styles.benefitItem}>
+                  <span className={styles.benefitIcon}>✓</span>
+                  {benefit}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>

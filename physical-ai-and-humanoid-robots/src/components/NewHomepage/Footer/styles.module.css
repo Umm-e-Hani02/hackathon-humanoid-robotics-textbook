@@ -1,10 +1,128 @@
 .footer {
-  padding: 3rem 0;
-  border-top: 1px solid var(--ifm-card-border-color, rgba(0, 0, 0, 0.1));
+  padding: 2.5rem 0 1.5rem;
+  border-top: 1px solid var(--custom-border-color);
+  background-color: var(--ifm-background-color);
+  margin-top: 3rem;
 }
 
-.footerText {
-  color: var(--ifm-font-color-secondary);
-  font-size: 0.9rem;
+[data-theme='dark'] .footer {
+  border-top: 1px solid var(--custom-border-color);
+}
+
+.footerContent {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--custom-border-color);
+}
+
+.footerSection {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footerTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--custom-headings-color);
+  font-family: 'Montserrat', 'Poppins', sans-serif;
+}
+
+.footerDescription {
+  color: var(--custom-muted-text-color);
+  line-height: 1.6;
   margin: 0;
+  font-size: 0.95rem;
+  font-family: 'Roboto', 'Open Sans', sans-serif;
+}
+
+.sectionTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--custom-headings-color);
+  font-family: 'Montserrat', 'Poppins', sans-serif;
+}
+
+.footerLinks {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footerLinks li {
+  margin-bottom: 0.5rem;
+}
+
+.footerLink {
+  color: var(--custom-body-text-color);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+  font-family: 'Roboto', 'Open Sans', sans-serif;
+}
+
+.footerLink:hover {
+  color: var(--ifm-color-primary);
+  text-decoration: underline;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 1rem;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--custom-border-color);
+  color: var(--custom-body-text-color);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.socialLink:hover {
+  background-color: var(--ifm-color-primary);
+  color: white;
+  border-color: var(--ifm-color-primary);
+  transform: translateY(-2px);
+}
+
+.socialIcon {
+  transition: transform 0.2s ease;
+}
+
+.socialLink:hover .socialIcon {
+  transform: scale(1.1);
+}
+
+.footerBottom {
+  text-align: center;
+  padding-top: 1.5rem;
+}
+
+.copyright {
+  color: var(--custom-muted-text-color);
+  font-size: 0.85rem;
+  margin: 0;
+  font-family: 'Roboto', 'Open Sans', sans-serif;
+}
+
+@media (max-width: 768px) {
+  .footerContent {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .footerSection {
+    min-width: 100%;
+  }
 }

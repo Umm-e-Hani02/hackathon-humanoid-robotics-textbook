@@ -6,7 +6,13 @@ app = FastAPI()
 
 origins = [
     "http://localhost:3000",  # For local development of Docusaurus
+    "http://localhost:3001",  # Additional local development port
     "https://physical-ai-and-humanoid-robots.github.io",  # Deployed Docusaurus site
+    "https://*.vercel.app",   # Vercel deployments
+    "https://*.netlify.app",  # Netlify deployments
+    "https://*.pages.dev",    # Cloudflare Pages
+    "https://*.github.io",    # GitHub Pages
+    "*"  # Allow all origins during development (be careful in production)
 ]
 
 app.add_middleware(
