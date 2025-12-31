@@ -11,13 +11,6 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-try:
-    from src.rag_agent import service as rag_agent_service
-    logger.info("Successfully imported rag_agent_service")
-except ImportError as e:
-    logger.error(f"Failed to import rag_agent_service: {e}")
-    raise
-
 app = FastAPI()
 
 origins = [
@@ -39,12 +32,17 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Try to import and include the router, but allow the app to start even if there are issues
 try:
+    from src.rag_agent import service as rag_agent_service
     app.include_router(rag_agent_service.router, prefix="/agent", tags=["RAG Agent"])
     logger.info("Successfully included rag_agent_service router")
+except ImportError as e:
+    logger.error(f"Failed to import rag_agent_service: {e}")
+    logger.error("The RAG agent functionality will not be available")
 except Exception as e:
     logger.error(f"Failed to include rag_agent_service router: {e}")
-    raise
+    logger.error("The RAG agent functionality will not be available")
 
 @app.get("/")
 async def root():

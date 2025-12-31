@@ -12,4 +12,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 8000
 
+# Set the working directory for runtime
+WORKDIR /app/backend
+
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "${PORT:-8000}"]
