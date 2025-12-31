@@ -2,17 +2,14 @@ FROM python:3.10-slim
 
 WORKDIR /app
 
-# Copy the entire project (from project root where both src and backend exist)
+# Copy full project so src/ and backend/ both exist
 COPY . .
 
-# Install requirements from the backend directory
-WORKDIR /app/backend
-COPY ./requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# Install backend dependencies
+RUN pip install --no-cache-dir -r backend/requirements.txt
 
-EXPOSE 8000
+# Railway uses 8080
+EXPOSE 8080
 
-# Set PYTHONPATH to include both the current directory and the parent directory
-ENV PYTHONPATH=/app:/app/backend
-
-CMD ["sh", "-c", "cd /app/backend && uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000}"]
+# IMPORTANT: run from project root
+CMD ["uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8080"]
