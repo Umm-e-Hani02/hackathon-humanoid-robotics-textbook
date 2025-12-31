@@ -30,17 +30,16 @@ app.add_middleware(
 )
 
 # Try to import and include the router, but allow the app to start even if there are issues
+import sys
+import os
+
+# Add the project root directory to Python path
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
+
+# Try importing the service
 try:
-    import sys
-    import os
-
-    # Add the project root directory (parent of backend/) to Python path
-    # This ensures 'src' directory can be found when deployed to Railway
-    project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    if project_root not in sys.path:
-        sys.path.insert(0, project_root)
-
-    # Import and register the router
     from src.rag_agent import service as rag_agent_service
     app.include_router(rag_agent_service.router, prefix="/agent", tags=["RAG Agent"])
     logger.info("Successfully included rag_agent_service router")
