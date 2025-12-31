@@ -4,14 +4,6 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import logging
 
-# Set up Python path to handle different deployment scenarios
-current_dir = os.path.dirname(os.path.abspath(__file__))  # backend directory
-parent_dir = os.path.dirname(current_dir)  # project root directory
-
-# Add both directories to Python path to handle different deployment structures
-sys.path.insert(0, parent_dir)  # Project root (where src directory is)
-sys.path.insert(0, current_dir)  # Backend directory (for local imports)
-
 # Set up logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -42,16 +34,20 @@ try:
     import sys
     import os
 
-    # Ensure the project root is in the Python path for Railway deployment
-    project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # This goes up to the main project directory
+    # Determine the project root directory (two levels up from this file)
+    current_file_dir = os.path.dirname(os.path.abspath(__file__))  # backend directory
+    project_root = os.path.dirname(current_file_dir)  # project root directory
+
+    # Add project root to the beginning of sys.path to ensure proper imports
     if project_root not in sys.path:
         sys.path.insert(0, project_root)
 
-    # Also add the current working directory
-    current_dir = os.getcwd()
-    if current_dir not in sys.path and current_dir != project_root:
-        sys.path.insert(0, current_dir)
+    # Also add the current working directory in case it's different
+    current_working_dir = os.getcwd()
+    if current_working_dir not in sys.path and current_working_dir != project_root:
+        sys.path.insert(0, current_working_dir)
 
+    # Try importing the service
     from src.rag_agent import service as rag_agent_service
     app.include_router(rag_agent_service.router, prefix="/agent", tags=["RAG Agent"])
     logger.info("Successfully included rag_agent_service router")
