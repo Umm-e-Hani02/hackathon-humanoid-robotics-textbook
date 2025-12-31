@@ -34,20 +34,13 @@ try:
     import sys
     import os
 
-    # Determine the project root directory (two levels up from this file)
-    current_file_dir = os.path.dirname(os.path.abspath(__file__))  # backend directory
-    project_root = os.path.dirname(current_file_dir)  # project root directory
-
-    # Add project root to the beginning of sys.path to ensure proper imports
+    # Add the project root directory (parent of backend/) to Python path
+    # This ensures 'src' directory can be found when deployed to Railway
+    project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     if project_root not in sys.path:
         sys.path.insert(0, project_root)
 
-    # Also add the current working directory in case it's different
-    current_working_dir = os.getcwd()
-    if current_working_dir not in sys.path and current_working_dir != project_root:
-        sys.path.insert(0, current_working_dir)
-
-    # Try importing the service
+    # Import and register the router
     from src.rag_agent import service as rag_agent_service
     app.include_router(rag_agent_service.router, prefix="/agent", tags=["RAG Agent"])
     logger.info("Successfully included rag_agent_service router")
