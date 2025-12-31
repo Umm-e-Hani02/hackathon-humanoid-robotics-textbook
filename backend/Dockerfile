@@ -5,9 +5,9 @@ WORKDIR /app
 # Copy the entire project (from project root where both src and backend exist)
 COPY . .
 
+# Install requirements from the backend directory
 WORKDIR /app/backend
-
-# Install requirements
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 8000
