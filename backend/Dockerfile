@@ -7,7 +7,7 @@ COPY . .
 
 # Install requirements from the backend directory
 WORKDIR /app/backend
-COPY requirements.txt .
+COPY ./requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 8000
