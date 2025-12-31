@@ -2,11 +2,21 @@ import sys
 import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+import logging
 
 # Add the parent directory to Python path to import from src
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from src.rag_agent import service as rag_agent_service
+# Set up logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+try:
+    from src.rag_agent import service as rag_agent_service
+    logger.info("Successfully imported rag_agent_service")
+except ImportError as e:
+    logger.error(f"Failed to import rag_agent_service: {e}")
+    raise
 
 app = FastAPI()
 
@@ -29,7 +39,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(rag_agent_service.router, prefix="/agent", tags=["RAG Agent"])
+try:
+    app.include_router(rag_agent_service.router, prefix="/agent", tags=["RAG Agent"])
+    logger.info("Successfully included rag_agent_service router")
+except Exception as e:
+    logger.error(f"Failed to include rag_agent_service router: {e}")
+    raise
 
 @app.get("/")
 async def root():
