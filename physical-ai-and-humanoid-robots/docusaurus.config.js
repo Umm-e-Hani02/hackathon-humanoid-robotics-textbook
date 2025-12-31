@@ -74,7 +74,7 @@ const config = {
 
           // Replace 'YOUR_DEPLOYED_BACKEND_URL' with the actual URL after deployment
           // Example: 'https://your-app-name.onrender.com/agent/chat'
-          apiUrl: process.env.API_URL || 'YOUR_DEPLOYED_BACKEND_URL/agent/chat',
+          apiUrl: process.env.API_URL || 'https://hackathon-humanoid-robotics-textbook-production.up.railway.app/agent/chat',
 
 
 

@@ -5,7 +5,14 @@ from fastapi.middleware.cors import CORSMiddleware
 import logging
 
 # Add the parent directory to Python path to import from src
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# Handle different deployment scenarios
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(current_dir)
+grandparent_dir = os.path.dirname(parent_dir)
+
+# Add both parent and grandparent directories to Python path to handle different deployment structures
+sys.path.insert(0, parent_dir)  # For when backend is the root in deployment
+sys.path.insert(0, grandparent_dir)  # For local development structure
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
