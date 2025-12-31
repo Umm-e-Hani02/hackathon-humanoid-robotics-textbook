@@ -1,5 +1,11 @@
+import sys
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
+# Add the parent directory to Python path to import from src
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from src.rag_agent import service as rag_agent_service
 
 app = FastAPI()

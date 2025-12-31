@@ -2,14 +2,13 @@ FROM python:3.10-slim
 
 WORKDIR /app
 
-# Copy requirements first for better caching
-COPY ../requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy src directory from parent
-COPY ../src ./src
-# Copy backend directory contents
+# Copy the entire project (from project root where both src and backend exist)
 COPY . .
+
+WORKDIR /app/backend
+
+# Install requirements
+RUN pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 8000
 
