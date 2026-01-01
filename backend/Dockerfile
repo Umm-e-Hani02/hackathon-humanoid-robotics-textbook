@@ -2,27 +2,28 @@ FROM python:3.10-slim
 
 WORKDIR /app
 
-# Build from project root context
+# Simple, robust Dockerfile for Railway
 WORKDIR /app
 
-# Copy specifically what we need
-# Using wildcards/optional paths helps with different build environments
-COPY requirements.txt .
-COPY backend/requirements.txt* ./backend/
-RUN if [ -f backend/requirements.txt ]; then pip install --no-cache-dir -r backend/requirements.txt; else pip install --no-cache-dir -r requirements.txt; fi
-
-# Copy all source and backend files
-# If we are in the root, /src and /backend exist
-# If we are in backend/, we need to handle it gracefully
+# Copy all files from the current build context
+# If Railway is at root, it copies everything (including src and backend)
+# If Railway is at /backend, it copies only backend contents
 COPY . .
+
+# Install dependencies from whichever requirements.txt is available in the current context
+RUN if [ -f backend/requirements.txt ]; then \
+        pip install --no-cache-dir -r backend/requirements.txt; \
+    elif [ -f requirements.txt ]; then \
+        pip install --no-cache-dir -r requirements.txt; \
+    fi
 
 # Railway uses 8080
 EXPOSE 8080
 
-# Set PYTHONPATH to include the current directory so 'src' can be found
-# We add both /app and /app/backend to be extremely safe
-ENV PYTHONPATH=/app:/app/backend
+# The PYTHONPATH is the key to fixing the 'src' import error.
+# We ensure Python looks in the root (/app) for the 'src' package.
+ENV PYTHONPATH=/app
 
-# Run the app
-# Use a string command to allow path searching
-CMD ["uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8080"]
+# Start the application
+# We try to run it from backend.main, or just main if the folder structure is flat
+CMD ["sh", "-c", "if [ -f backend/main.py ]; then uvicorn backend.main:app --host 0.0.0.0 --port 8080; else uvicorn main:app --host 0.0.0.0 --port 8080; fi"]
