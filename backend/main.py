@@ -29,28 +29,22 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Try to import and include the router, but allow the app to start even if there are issues
-import sys
-import os
-
-# Add the project root directory and backend directory to Python path
-project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-if project_root not in sys.path:
-    sys.path.insert(0, project_root)
-
-# Also ensure backend is in path
-backend_dir = os.path.dirname(os.path.abspath(__file__))
-if backend_dir not in sys.path:
-    sys.path.append(backend_dir)
-
-# Try importing the service
+# Try to import and include the router
 try:
+    # Since we moved src into backend/, it should be discoverable locally
     from src.rag_agent import service as rag_agent_service
     app.include_router(rag_agent_service.router, prefix="/agent", tags=["RAG Agent"])
     logger.info("Successfully included rag_agent_service router")
 except ImportError as e:
     logger.error(f"Failed to import rag_agent_service: {e}")
-    logger.error("The RAG agent functionality will not be available")
+    # Try alternative import if running in a different context
+    try:
+        from backend.src.rag_agent import service as rag_agent_service
+        app.include_router(rag_agent_service.router, prefix="/agent", tags=["RAG Agent"])
+        logger.info("Successfully included rag_agent_service router via backend.src")
+    except ImportError as e2:
+        logger.error(f"Failed to import via backend.src: {e2}")
+        logger.error("The RAG agent functionality will not be available")
 except Exception as e:
     logger.error(f"Failed to include rag_agent_service router: {e}")
     logger.error("The RAG agent functionality will not be available")
