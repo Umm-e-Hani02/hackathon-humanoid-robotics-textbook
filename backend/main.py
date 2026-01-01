@@ -33,10 +33,15 @@ app.add_middleware(
 import sys
 import os
 
-# Add the project root directory to Python path
+# Add the project root directory and backend directory to Python path
 project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if project_root not in sys.path:
     sys.path.insert(0, project_root)
+
+# Also ensure backend is in path
+backend_dir = os.path.dirname(os.path.abspath(__file__))
+if backend_dir not in sys.path:
+    sys.path.append(backend_dir)
 
 # Try importing the service
 try:
