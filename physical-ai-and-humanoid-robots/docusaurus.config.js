@@ -69,9 +69,9 @@ const config = {
   
 
     customFields: {
-          // API URL - uses Railway production backend for live site, localhost for dev
+          // API URL - using Railway production backend (updated with rate limit handling)
           apiUrl: process.env.API_URL || 'https://hackathon-humanoid-robotics-textbook-production.up.railway.app/agent/chat',
-          // For local development: 'http://127.0.0.1:8000/agent/chat'
+          // For local dev: 'http://127.0.0.1:8000/agent/chat'
 
 
 
