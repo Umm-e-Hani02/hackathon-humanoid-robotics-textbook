@@ -1,585 +1,215 @@
 /**
- * Global CSS styles for the book "Physical AI & Humanoid Robots".
- * This file defines the color palette for light and dark themes,
- * typography, and other base styles, following a clean, modern, tech-oriented design.
+ * Global CSS - Professional Technical Book Theme
+ * Navy & Teal Palette | Clean Typography | Modern Layout
  */
 
-/* You can override the default Infima variables here. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 :root {
-  /* -- Tech-oriented Muted Blue × Dark Grey Palette -- */
-  --ifm-color-primary: #3b82f6; /* Muted blue (tech tone) */
-  --ifm-color-primary-dark: #2563eb;
-  --ifm-color-primary-darker: #1d4ed8;
-  --ifm-color-primary-darkest: #1e3a8a;
-  --ifm-color-primary-light: #60a5fa;
-  --ifm-color-primary-lighter: #93c5fd;
+  /* Navy & Teal Professional Palette */
+  --ifm-color-primary: #1e40af;
+  --ifm-color-primary-dark: #1e3a8a;
+  --ifm-color-primary-darker: #1e3a8a;
+  --ifm-color-primary-darkest: #172554;
+  --ifm-color-primary-light: #3b82f6;
+  --ifm-color-primary-lighter: #60a5fa;
   --ifm-color-primary-lightest: #dbeafe;
 
-  --ifm-color-secondary: #1f2937; /* Dark grey (tech tone) */
-  --ifm-color-secondary-dark: #111827;
-  --ifm-color-secondary-darker: #0f172a;
-  --ifm-color-secondary-darkest: #0c122a;
-  --ifm-color-secondary-light: #374151;
-  --ifm-color-secondary-lighter: #6b7280;
-  --ifm-color-secondary-lightest: #9ca3af;
+  --ifm-color-secondary: #64748b;
+  --ifm-color-secondary-dark: #475569;
+  --ifm-color-secondary-darker: #334155;
+  --ifm-color-secondary-darkest: #1e293b;
 
-  --ifm-color-success: #10b981; /* Professional emerald */
-  --ifm-color-info: #0ea5e9; /* Professional light blue */
-  --ifm-color-warning: #f59e0b; /* Professional amber */
-  --ifm-color-danger: #ef4444; /* Professional red */
+  --accent-teal: #14b8a6;
+  --accent-cyan: #06b6d4;
 
-  --ifm-color-gray-50: #f9fafb;
-  --ifm-color-gray-100: #f3f4f6;
-  --ifm-color-gray-200: #e5e7eb;
-  --ifm-color-gray-300: #d1d5db;
-  --ifm-color-gray-400: #9ca3af;
-  --ifm-color-gray-500: #6b7280; /* Muted text/borders */
-  --ifm-color-gray-600: #4b5563;
-  --ifm-color-gray-700: #374151;
-  --ifm-color-gray-800: #1f2937; /* Charcoal */
-  --ifm-color-gray-900: #111827; /* Near-black text */
-
+  /* Typography */
+  --ifm-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --heading-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --ifm-code-font-size: 95%;
+  --ifm-line-height-base: 1.7;
 
-  /* Set a professional, readable font */
-  --ifm-font-family-base: 'Roboto', 'Open Sans', sans-serif;
+  /* Spacing */
+  --section-padding: 6rem;
+  --section-padding-mobile: 4rem;
 }
 
-/* Import Montserrat, Poppins, Roboto, and Open Sans fonts */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Open+Sans:wght@400;500;600;700&display=swap');
-
-/* --- Light Theme --- */
+/* Light Theme */
 [data-theme='light'] {
-  --ifm-background-color: #ffffff; /* Clean white background */
-  --ifm-card-background-color: #ffffff; /* Pure white for cards */
-  --ifm-font-color-base: #1f2937; /* Dark grey text for readability */
+  --ifm-background-color: #ffffff;
+  --ifm-card-background-color: #f8fafc;
+  --ifm-font-color-base: #0f172a;
   --ifm-navbar-background-color: #ffffff;
-  --ifm-footer-background-color: #ffffff;
+  --ifm-footer-background-color: #f8fafc;
 
-  --custom-main-background: #ffffff;
-  --custom-card-background: #ffffff;
-  --custom-headings-color: #111827; /* Navy/dark grey headings */
-  --custom-body-text-color: #1f2937; /* Dark grey text */
-  --custom-muted-text-color: #6b7280; /* Muted text */
-  --custom-border-color: #e5e7eb; /* Subtle borders */
-
-  --custom-primary-button-background: var(--ifm-color-primary);
-  --custom-primary-button-text: #ffffff;
-  --custom-button-hover-background: var(--ifm-color-primary-darker);
-
-  --custom-card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
-  --ifm-link-color: var(--ifm-color-primary);
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.05);
-
-  /* Secondary color for accents */
-  --ifm-color-secondary: #1f2937; /* Dark grey */
+  --custom-border-color: #e2e8f0;
+  --custom-muted-text-color: #64748b;
+  --custom-card-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
-/* --- Dark Theme --- */
+/* Dark Theme */
 [data-theme='dark'] {
-  --ifm-background-color: #111827; /* Dark navy background */
-  --ifm-card-background-color: #1f2937; /* Charcoal card background */
-  --ifm-font-color-base: #e5e7eb; /* Soft white text */
-  --ifm-navbar-background-color: #111827;
-  --ifm-footer-background-color: #111827;
+  --ifm-background-color: #0f172a;
+  --ifm-card-background-color: #1e293b;
+  --ifm-font-color-base: #f1f5f9;
+  --ifm-navbar-background-color: #0f172a;
+  --ifm-footer-background-color: #0f172a;
 
-  --custom-main-background: #111827;
-  --custom-card-background: #1f2937;
-  --custom-headings-color: #e5e7eb; /* Soft white text */
-  --custom-body-text-color: #e5e7eb;
-  --custom-muted-text-color: #9ca3af; /* Muted text */
-  --custom-border-color: #374151; /* Charcoal borders */
-
-  --custom-primary-button-background: var(--ifm-color-primary);
-  --custom-primary-button-text: #ffffff;
-  --custom-button-hover-background: var(--ifm-color-primary-darker);
-
-  --custom-card-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow in dark mode */
-
-  --ifm-link-color: var(--ifm-color-primary);
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
-
-  /* Secondary color for accents */
-  --ifm-color-secondary: #9ca3af; /* Light grey */
+  --custom-border-color: #334155;
+  --custom-muted-text-color: #94a3b8;
+  --custom-card-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
-/* Clean, modern button styling */
-.button {
-  border-radius: 8px;
-  font-weight: 600;
-  padding: 12px 24px;
-  transition: all 0.3s ease;
-  text-decoration: none;
-  border: 1px solid transparent;
-  box-shadow: var(--custom-card-shadow);
-  background-color: var(--ifm-color-gray-100);
-  color: var(--custom-body-text-color);
-}
-
-.button--primary {
-  background: var(--ifm-color-primary);
-  color: white;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-}
-
-.button--primary:hover {
-  background: var(--ifm-color-primary-darker);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-}
-
-.button--secondary {
-  background-color: transparent;
-  color: var(--ifm-color-secondary);
-  border: 1px solid var(--ifm-color-secondary);
-}
-
-.button--secondary:hover {
-  background-color: rgba(31, 41, 55, 0.08); /* Dark grey with opacity */
-  border-color: var(--ifm-color-secondary-light);
-  transform: translateY(-1px);
-}
-
-.button--success {
-  background-color: var(--ifm-color-success);
-  color: white;
-}
-
-.button--success:hover {
-  background-color: #059669;
-  transform: translateY(-1px);
-}
-
-[data-theme='dark'] .button {
-  background-color: var(--ifm-color-gray-700);
-  color: var(--ifm-font-color-base);
-}
-
-[data-theme='dark'] .button--secondary {
-  border: 1px solid var(--ifm-color-secondary);
-  color: var(--ifm-color-secondary-light);
-}
-
-[data-theme='dark'] .button--secondary:hover {
-  background-color: rgba(156, 163, 175, 0.1); /* Light grey with opacity */
-  border-color: var(--ifm-color-secondary-lighter);
-}
-
-[data-theme='dark'] .button--primary {
-  background: var(--ifm-color-primary);
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
-}
-
-[data-theme='dark'] .button--primary:hover {
-  background: var(--ifm-color-primary-darker);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
-}
-
-/* Clean, tech-oriented typography enhancements */
+/* Typography Hierarchy */
 h1, h2, h3, h4, h5, h6 {
-  color: var(--custom-headings-color);
-  font-family: 'Montserrat', 'Poppins', sans-serif;
-  font-weight: 600; /* Clean semi-bold weight */
-  line-height: 1.4;
-  margin-top: 1.75rem;
-  margin-bottom: 1.25rem;
+  font-family: var(--heading-font-family);
+  font-weight: 600;
+  color: var(--ifm-font-color-base);
+  line-height: 1.25;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
 }
 
 h1 {
   font-size: 2.5rem;
   font-weight: 700;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
 }
 
 h2 {
   font-size: 2rem;
   font-weight: 600;
-  letter-spacing: -0.01em;
-  margin-bottom: 1.5rem;
+  border-bottom: none;
+  line-height: 1.25;
 }
 
 h3 {
   font-size: 1.5rem;
   font-weight: 600;
+  line-height: 1.3;
 }
 
-h4 {
-  font-size: 1.25rem;
-  font-weight: 500;
-}
-
-/* Tech-oriented body text styling */
 p {
-  line-height: 1.7;
-  margin-bottom: 1.25rem;
-  color: var(--custom-body-text-color);
-  font-family: 'Roboto', 'Open Sans', sans-serif;
-  font-size: 1.05rem;
+  line-height: 1.75;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: var(--ifm-font-color-base);
+  font-weight: 400;
 }
 
-/* Academic section spacing */
-section {
-  margin-bottom: 3rem;
-}
-
-/* Academic card styling */
-.card {
-  border: 1px solid var(--custom-border-color);
-  border-radius: 8px;
-  box-shadow: var(--custom-card-shadow);
-  transition: all 0.2s ease;
-  overflow: hidden;
-  background-color: var(--ifm-card-background-color);
-  margin-bottom: 1.5rem;
-}
-
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-}
-
-/* Academic button styling */
+/* Buttons */
 .button {
   border-radius: 6px;
-  font-weight: 500;
-  padding: 10px 20px;
+  font-weight: 600;
+  padding: 12px 28px;
   transition: all 0.2s ease;
-  text-decoration: none;
-  border: 1px solid transparent;
-  box-shadow: var(--custom-card-shadow);
-  background-color: var(--ifm-color-gray-100);
-  color: var(--custom-body-text-color);
-  font-size: 0.95rem;
+  box-shadow: none;
+  font-size: 1rem;
+  letter-spacing: 0;
+  border-width: 2px;
+  font-family: var(--ifm-font-family-base);
 }
 
 .button--primary {
   background: var(--ifm-color-primary);
   color: white;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border: 2px solid var(--ifm-color-primary);
 }
 
 .button--primary:hover {
   background: var(--ifm-color-primary-darker);
+  border-color: var(--ifm-color-primary-darker);
+  color: white;
+  box-shadow: 0 4px 12px rgba(30, 64, 175, 0.2);
   transform: translateY(-1px);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
 }
 
 .button--secondary {
-  background-color: transparent;
-  color: var(--ifm-color-secondary);
-  border: 1px solid var(--ifm-color-secondary);
+  background: transparent;
+  color: var(--ifm-color-primary);
+  border: 2px solid var(--ifm-color-primary);
 }
 
 .button--secondary:hover {
-  background-color: rgba(91, 33, 182, 0.08); /* Muted purple with opacity */
-  border-color: var(--ifm-color-secondary-light);
+  background: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
+  color: white;
   transform: translateY(-1px);
 }
 
-
-/* Clean, modern code block styling */
-.code-block {
-  background-color: var(--ifm-code-background-color);
-  border-radius: 8px;
-  padding: 16px;
-  overflow-x: auto;
-  border: 1px solid var(--custom-border-color);
-  font-size: 0.9rem;
-}
-
-/* Clean, modern link styling */
-a {
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-a:hover {
-  text-decoration: underline;
-  color: var(--ifm-color-primary);
-}
-
+/* Navbar */
 .navbar {
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  background-color: var(--ifm-navbar-background-color) !important;
-  padding: 0.75rem 0;
   border-bottom: 1px solid var(--custom-border-color);
+  box-shadow: none;
+  backdrop-filter: blur(8px);
 }
 
-.navbar__inner {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-.navbar__title {
-  font-weight: 600;
-  color: var(--ifm-color-primary);
-  font-family: 'Montserrat', 'Poppins', sans-serif;
-  font-size: 1.25rem;
-}
-
-.navbar__brand {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.navbar__link {
-  font-weight: 500;
-  font-family: 'Roboto', 'Open Sans', sans-serif;
-  color: var(--custom-body-text-color);
-  transition: color 0.2s ease;
-}
-
-.navbar__link:hover {
-  color: var(--ifm-color-primary);
-}
-
-.navbar__item {
-  margin: 0 0.5rem;
-}
-
-.navbar__item.dropdown {
-  margin: 0 0.5rem;
-}
-
-.navbar__item.dropdown .navbar__link {
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  transition: all 0.2s ease;
-}
-
-.navbar__item.dropdown .navbar__link:hover {
-  background-color: var(--ifm-color-gray-100);
-  color: var(--ifm-color-primary);
-}
-
-[data-theme='dark'] .navbar__item.dropdown .navbar__link:hover {
-  background-color: var(--ifm-color-gray-700);
-}
-
-.header-github-link::before {
-  content: '';
-  width: 24px;
-  height: 24px;
-  display: flex;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='currentColor' d='M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z'/%3E%3C/svg%3E") no-repeat;
-}
-
-[data-theme='dark'] .header-github-link::before {
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23e2e8f0' d='M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z'/%3E%3C/svg%3E") no-repeat;
-}
-
-/* Clean, modern footer styling */
+/* Footer */
 .footer {
+  border-top: 1px solid var(--custom-border-color);
   background-color: var(--ifm-footer-background-color);
-  border-top: 1px solid var(--custom-border-color);
-  padding: 3rem 0 2rem;
-  margin-top: 4rem;
+  padding: 3rem 0;
 }
 
-.footer__title {
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-  color: var(--custom-headings-color);
-}
-
-.footer__link-item {
-  color: var(--custom-body-text-color);
-}
-
-.footer__link-item:hover {
-  color: var(--ifm-color-primary);
-}
-
-/* Clean, modern container styling */
-.container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-/* Clean, modern table styling */
-.table {
+/* Cards */
+.card {
   border: 1px solid var(--custom-border-color);
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.table thead {
-  background-color: var(--ifm-color-gray-100);
-}
-
-.table th {
-  font-weight: 600;
-  padding: 0.75rem 1rem;
-  text-align: left;
-  border-bottom: 1px solid var(--custom-border-color);
-  color: var(--custom-headings-color);
-}
-
-.table td {
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid var(--custom-border-color);
-  color: var(--custom-body-text-color);
-}
-
-.table tr:last-child td {
-  border-bottom: none;
-}
-
-[data-theme='dark'] .table thead {
-  background-color: var(--ifm-color-gray-700);
-}
-
-/* Clean, modern doc article styling */
-.doc-article {
-  max-width: 850px;
-  margin: 0 auto;
-  padding: 2rem 1.5rem;
-}
-
-/* Clean, modern sidebar styling */
-.menu {
-  font-size: 0.9rem;
-}
-
-.menu__list-item {
-  margin-bottom: 0.25rem;
-}
-
-.menu__link {
-  border-radius: 6px;
-  padding: 6px 12px;
+  background-color: var(--ifm-card-background-color);
+  border-radius: 4px;
+  box-shadow: var(--custom-card-shadow);
   transition: all 0.2s ease;
 }
 
-.menu__link:hover {
-  background-color: var(--ifm-color-gray-100);
-}
-
-.menu__link--active {
-  background-color: rgba(125, 157, 131, 0.1);
-  color: var(--ifm-color-primary);
+/* Section Title Utility */
+.section-title {
+  font-size: 2.25rem;
   font-weight: 600;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--ifm-font-color-base);
+  position: relative;
+  padding-bottom: 1rem;
 }
 
-[data-theme='dark'] .menu__link:hover {
-  background-color: var(--ifm-color-gray-700);
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-teal) 0%, transparent 100%);
 }
 
-[data-theme='dark'] .menu__link--active {
-  background-color: rgba(125, 157, 131, 0.2);
-  color: var(--ifm-color-primary);
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
 }
 
-/* Clean, modern doc item wrapper */
-.docitem {
-  padding-top: 2rem;
+/* Responsive Typography */
+@media (max-width: 996px) {
+  h1 { font-size: 2.25rem; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.35rem; }
+
+  .section-title {
+    font-size: 2rem;
+  }
 }
 
-/* Clean, modern pagination styling */
-.pagination-nav {
-  margin: 3rem 0;
-  padding: 2rem 0;
-  border-top: 1px solid var(--custom-border-color);
-  border-bottom: 1px solid var(--custom-border-color);
-}
+@media (max-width: 768px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
 
-.pagination-nav__link {
-  border: 1px solid var(--custom-border-color);
-  border-radius: 8px;
-  padding: 1.5rem;
-  transition: all 0.2s ease;
-}
+  .section-title {
+    font-size: 1.75rem;
+  }
 
-.pagination-nav__link:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-}
-
-/* Clean, modern admonitions (info, note, warning, etc.) */
-.admonition {
-  border-radius: 8px;
-  border-left: 4px solid;
-  margin: 1.5rem 0;
-}
-
-.admonition--note {
-  border-left-color: var(--ifm-color-primary);
-  background-color: rgba(125, 157, 131, 0.05);
-}
-
-.admonition--tip {
-  border-left-color: var(--ifm-color-success);
-  background-color: rgba(16, 185, 129, 0.05);
-}
-
-.admonition--caution {
-  border-left-color: var(--ifm-color-warning);
-  background-color: rgba(245, 158, 11, 0.05);
-}
-
-.admonition--danger {
-  border-left-color: var(--ifm-color-danger);
-  background-color: rgba(239, 68, 68, 0.05);
-}
-
-.admonition--info {
-  border-left-color: var(--ifm-color-info);
-  background-color: rgba(14, 165, 233, 0.05);
-}
-
-[data-theme='dark'] .admonition--note {
-  background-color: rgba(125, 157, 131, 0.1);
-}
-
-[data-theme='dark'] .admonition--tip {
-  background-color: rgba(16, 185, 129, 0.1);
-}
-
-[data-theme='dark'] .admonition--caution {
-  background-color: rgba(245, 158, 11, 0.1);
-}
-
-[data-theme='dark'] .admonition--danger {
-  background-color: rgba(239, 68, 68, 0.1);
-}
-
-[data-theme='dark'] .admonition--info {
-  background-color: rgba(14, 165, 233, 0.1);
-}
-
-/* Clean, modern search bar */
-.navbar__search-input {
-  border-radius: 6px;
-  border: 1px solid var(--custom-border-color);
-  padding: 8px 12px;
-  background-color: var(--ifm-card-background-color);
-  color: var(--custom-body-text-color);
-}
-
-.navbar__search-input::placeholder {
-  color: var(--custom-muted-text-color);
-}
-
-/* Clean, modern dropdown menu */
-.dropdown__menu {
-  background-color: var(--ifm-card-background-color);
-  border: 1px solid var(--custom-border-color);
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-}
-
-.dropdown__link {
-  color: var(--custom-body-text-color);
-}
-
-.dropdown__link:hover {
-  background-color: var(--ifm-color-gray-100);
-  color: var(--ifm-color-primary);
-}
-
-[data-theme='dark'] .dropdown__link:hover {
-  background-color: var(--ifm-color-gray-700);
+  p {
+    font-size: 0.95rem;
+  }
 }

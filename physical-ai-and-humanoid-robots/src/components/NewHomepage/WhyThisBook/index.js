@@ -2,10 +2,10 @@ import React from 'react';
 import styles from './styles.module.css';
 
 const benefits = [
+  'Interactive AI Chatbot powered by RAG technology to answer your questions',
   'Comprehensive coverage from foundational concepts to advanced implementation techniques',
   'Hands-on projects and exercises to reinforce learning',
   'Industry-relevant technologies and frameworks',
-  'Cutting-edge developments in embodied AI and humanoid robotics',
   'Practical guidance for building real-world robotic systems'
 ];
 

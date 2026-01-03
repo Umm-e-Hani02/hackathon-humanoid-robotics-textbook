@@ -30,6 +30,14 @@ app.add_middleware(
 )
 
 # Try to import and include the router
+import sys
+import os
+
+# Add the current directory (backend/) to sys.path so 'src' can be found locally
+current_dir = os.path.dirname(os.path.abspath(__file__))
+if current_dir not in sys.path:
+    sys.path.insert(0, current_dir)
+
 try:
     # Since we moved src into backend/, it should be discoverable locally
     from src.rag_agent import service as rag_agent_service

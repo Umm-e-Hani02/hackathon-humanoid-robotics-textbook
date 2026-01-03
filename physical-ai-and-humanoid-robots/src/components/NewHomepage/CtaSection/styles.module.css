@@ -1,43 +1,83 @@
+/**
+ * CTA Section - Professional Technical Style
+ */
+
 .ctaSection {
-  padding: 5rem 0;
+  padding: var(--section-padding) 2rem;
   text-align: center;
   background-color: var(--ifm-background-color);
-  margin: 4rem 0;
+  border-top: 1px solid rgba(148, 163, 184, 0.1);
+  position: relative;
 }
 
-[data-theme='dark'] .ctaSection {
+[data-theme='light'] .ctaSection {
+  border-top: 1px solid rgba(148, 163, 184, 0.15);
 }
 
 .ctaSubtitle {
-  font-size: 1.25rem;
-  margin: 1.5rem auto 2.5rem;
+  font-size: 1.125rem;
+  margin: 1.5rem auto 3rem;
   max-width: 600px;
-  color: var(--custom-body-text-color);
-  font-family: 'Roboto', 'Open Sans', sans-serif;
+  color: rgba(148, 163, 184, 0.85);
+  line-height: 1.75;
+}
+
+[data-theme='light'] .ctaSubtitle {
+  color: rgba(100, 116, 139, 0.85);
 }
 
 .buttonContainer {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.25rem;
+  flex-wrap: wrap;
 }
 
 .buttonContainer .button {
-  padding: 1rem 2.5rem;
-  font-size: 1.1rem;
+  padding: 14px 32px;
+  font-size: 1.0625rem;
+  border-radius: 6px;
+  min-width: 160px;
 }
 
-@media (max-width: 768px) {
+/* Tablet */
+@media (max-width: 996px) {
   .ctaSection {
-    padding: 3rem 1rem;
+    padding: 5rem 2rem;
   }
 
   .ctaSubtitle {
-    font-size: 1.1rem;
+    font-size: 1.0625rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .buttonContainer .button {
+    padding: 12px 28px;
+    font-size: 1rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .ctaSection {
+    padding: var(--section-padding-mobile) 1.5rem;
+  }
+
+  .ctaSubtitle {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    max-width: 90%;
   }
 
   .buttonContainer {
     flex-direction: column;
     align-items: center;
+    gap: 1rem;
+  }
+
+  .buttonContainer .button {
+    width: 100%;
+    max-width: 320px;
+    padding: 12px 24px;
   }
 }

@@ -1,38 +1,48 @@
+/**
+ * Why This Book Section - Professional Technical Style
+ */
+
 .whyThisBook {
-  padding: 3rem 0;
+  padding: var(--section-padding) 2rem;
   background-color: var(--ifm-background-color);
-  margin: 3rem 0;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
 }
 
-[data-theme='dark'] .whyThisBook {
+[data-theme='light'] .whyThisBook {
+  border-bottom: 1px solid rgba(148, 163, 184, 0.15);
 }
 
 .content {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 2rem;
 }
 
 .description {
-  font-size: 1.1rem;
-  line-height: 1.65;
-  color: var(--custom-body-text-color);
-  margin: 0 0 2rem 0;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: rgba(148, 163, 184, 0.85);
+  margin-bottom: 3.5rem;
   text-align: center;
-  font-family: 'Roboto', 'Open Sans', sans-serif;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.benefits {
-  margin-top: 2rem;
+[data-theme='light'] .description {
+  color: rgba(100, 116, 139, 0.85);
 }
 
 .benefitsTitle {
-  font-size: 1.25rem;
+  font-size: 1.75rem;
   font-weight: 600;
-  margin-bottom: 1rem;
-  color: var(--custom-headings-color);
-  font-family: 'Montserrat', 'Poppins', sans-serif;
+  margin-bottom: 3rem;
+  color: #ffffff;
   text-align: center;
+  letter-spacing: -0.02em;
+}
+
+[data-theme='light'] .benefitsTitle {
+  color: #0f172a;
 }
 
 .benefitsList {
@@ -41,39 +51,98 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0;
 }
 
 .benefitItem {
   display: flex;
   align-items: flex-start;
-  gap: 0.75rem;
-  font-size: 1.05rem;
-  color: var(--custom-body-text-color);
-  padding: 0.75rem 0;
-  transition: transform 0.1s ease;
-  font-family: 'Roboto', 'Open Sans', sans-serif;
+  gap: 1.25rem;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--ifm-font-color-base);
+  padding: 1.5rem 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+  transition: all 0.25s ease;
+}
+
+.benefitItem:last-child {
+  border-bottom: none;
 }
 
 .benefitItem:hover {
-  transform: translateX(3px);
+  padding-left: 0.75rem;
+  background: rgba(20, 184, 166, 0.02);
+}
+
+[data-theme='light'] .benefitItem {
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+  color: #0f172a;
+}
+
+[data-theme='light'] .benefitItem:hover {
+  background: rgba(20, 184, 166, 0.03);
+}
+
+[data-theme='dark'] .benefitItem {
+  color: #f1f5f9;
 }
 
 .benefitIcon {
+  color: var(--accent-teal);
+  font-size: 1rem;
   flex-shrink: 0;
   margin-top: 4px;
-  color: var(--ifm-color-primary);
-  font-weight: bold;
-  width: 20px;
-  height: 20px;
+  opacity: 0.8;
 }
 
-@media (max-width: 768px) {
-  .description {
-    font-size: 1.05rem;
+/* Tablet */
+@media (max-width: 996px) {
+  .whyThisBook {
+    padding: 5rem 2rem;
   }
 
-  .content {
-    padding: 1.5rem;
+  .description {
+    font-size: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .benefitsTitle {
+    font-size: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .benefitItem {
+    font-size: 1rem;
+    padding: 1.25rem 0;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .whyThisBook {
+    padding: var(--section-padding-mobile) 1.5rem;
+  }
+
+  .description {
+    font-size: 0.9375rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .benefitsTitle {
+    font-size: 1.35rem;
+    margin-bottom: 2rem;
+  }
+
+  .benefitItem {
+    font-size: 0.9375rem;
+    gap: 1rem;
+    padding: 1.125rem 0;
+  }
+
+  .benefitIcon {
+    font-size: 0.875rem;
   }
 }

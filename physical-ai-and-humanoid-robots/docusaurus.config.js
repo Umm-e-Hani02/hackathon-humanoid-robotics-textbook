@@ -69,12 +69,9 @@ const config = {
   
 
     customFields: {
-
-
-
-          // Replace 'YOUR_DEPLOYED_BACKEND_URL' with the actual URL after deployment
-          // Example: 'https://your-app-name.onrender.com/agent/chat'
-          apiUrl: process.env.API_URL || 'https://hackathon-humanoid-robotics-textbook-production.up.railway.app/agent/chat',
+          // For local development, use localhost. For production, use Railway URL
+          apiUrl: process.env.API_URL || 'http://127.0.0.1:8000/agent/chat',
+          // Production URL: 'https://hackathon-humanoid-robotics-textbook-production.up.railway.app/agent/chat'
 
 
 

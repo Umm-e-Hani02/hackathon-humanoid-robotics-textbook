@@ -48,31 +48,46 @@ const Chatbot = () => {
 
     const userMessage = { id: Date.now(), text: inputValue, sender: 'user' };
     setMessages((prevMessages) => [...prevMessages, userMessage]);
+    const questionText = inputValue;
     setInputValue('');
     setIsLoading(true);
     setError(null);
 
     try {
-      // NOTE: Replace with your actual API endpoint and payload structure
+      console.log('Sending request to:', apiUrl);
+      console.log('Request payload:', { text: questionText });
+
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ text: inputValue }),
+        body: JSON.stringify({ text: questionText }),
       });
 
+      console.log('Response status:', response.status);
+
       if (!response.ok) {
-        throw new Error('Something went wrong. Please try again.');
+        const errorText = await response.text();
+        console.error('Error response:', errorText);
+        throw new Error(`Server error: ${response.status}. Please check the backend logs.`);
       }
 
       const data = await response.json();
+      console.log('Response data:', data);
+
       const assistantMessage = { id: Date.now() + 1, text: data.answer, sender: 'assistant' };
       setMessages((prevMessages) => [...prevMessages, assistantMessage]);
 
     } catch (err) {
+      console.error('Chat error:', err);
       setError(err.message);
-      const errorMessage = { id: Date.now() + 1, text: err.message, sender: 'assistant', isError: true };
+      const errorMessage = {
+        id: Date.now() + 1,
+        text: `Error: ${err.message}. Check console for details.`,
+        sender: 'assistant',
+        isError: true
+      };
       setMessages((prevMessages) => [...prevMessages, errorMessage]);
     } finally {
       setIsLoading(false);
@@ -90,6 +105,25 @@ const Chatbot = () => {
 
       {isOpen && (
         <div className="chatbot-panel">
+          <div className="chatbot-header">
+            <h3>AI Assistant</h3>
+            <button className="chatbot-close-btn" onClick={toggleChat} aria-label="Close chat">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
           <div className="chatbot-messages">
             {messages.map((msg, index) => (
               <div key={msg.id || index} className={`message ${msg.sender} ${msg.isError ? 'error' : ''}`}>

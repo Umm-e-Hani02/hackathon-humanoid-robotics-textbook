@@ -1,14 +1,34 @@
 import os
 from dotenv import load_dotenv
 
-def load_env_variables(env_path=".env"):
+def load_env_variables(env_path=None):
     """
     Loads environment variables from a .env file.
-
-    Args:
-        env_path (str): The path to the .env file. Defaults to ".env".
+    Automatically finds the .env file in the project root if no path is provided.
     """
-    load_dotenv(dotenv_path=env_path)
+    if env_path is None:
+        # Get the absolute path of the directory where this script is located
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        # Go up 3 levels to reach the project root from backend/src/utils/
+        root_dir = os.path.abspath(os.path.join(current_dir, "..", "..", ".."))
+
+        potential_paths = [
+            os.path.join(root_dir, ".env"),
+            os.path.join(os.getcwd(), ".env"),
+            ".env"
+        ]
+
+        for path in potential_paths:
+            print(f"Checking for .env at: {path}") # Debug log
+            if os.path.exists(path):
+                env_path = path
+                print(f"Found .env at: {env_path}") # Debug log
+                break
+
+    if env_path:
+        load_dotenv(dotenv_path=env_path)
+    else:
+        print("Warning: No .env file found!")
 
 def get_env_variable(key: str, default: str = None) -> str:
     """
