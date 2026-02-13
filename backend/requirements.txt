@@ -8,4 +8,3 @@ langchain-text-splitters
 fastapi
 uvicorn[standard]
 pydantic
-openai-agents
