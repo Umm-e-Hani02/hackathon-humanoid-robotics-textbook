@@ -12,9 +12,11 @@ class QdrantManager:
 
         print(f"Connecting to Qdrant at {self.qdrant_url}.")
 
+        # For Qdrant Cloud, use prefer_grpc=False to force HTTPS
         self.client = QdrantClient(
             url=self.qdrant_url,
             api_key=self.qdrant_api_key,
+            prefer_grpc=False,  # Force HTTPS for Qdrant Cloud
         )
 
     def create_collection(self, vector_size: int, distance: models.Distance = models.Distance.COSINE):
