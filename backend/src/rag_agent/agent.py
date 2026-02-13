@@ -92,16 +92,23 @@ Follow these rules strictly:
                 logger.error(f"Unexpected error during embedding: {e}")
                 raise
 
-    def retrieve(self, query: str):
+    def retrieve(self, query: str, selected_text: str = None):
         """
         Main RAG retrieval method with optimizations and error handling.
 
         Features:
         - Skips RAG for trivial queries (< 5 chars)
         - Handles Cohere rate limits with retry logic
+        - Supports selected text as additional context
         - Always returns valid response (never crashes)
+
+        Args:
+            query: User's question
+            selected_text: Optional text selected by user for context
         """
         logger.info(f"Received query: '{query}' (length: {len(query.strip())})")
+        if selected_text:
+            logger.info(f"Selected text context provided (length: {len(selected_text)})")
 
         try:
             # OPTIMIZATION: Skip RAG for very short/trivial queries
@@ -137,11 +144,25 @@ Follow these rules strictly:
                 }
                 for point in search_result
             ]
+
+            # If selected text is provided, add it as the first document with highest priority
+            if selected_text and selected_text.strip():
+                documents.insert(0, {
+                    'title': 'Selected Text (User Context)',
+                    'text': selected_text.strip()
+                })
+                logger.info(f"Added selected text as priority context document")
+
             logger.info(f"Retrieved {len(documents)} relevant chunks from book")
 
             # RATE LIMIT PROTECTION: Generate response with retry logic
             try:
-                response = self._generate_response_with_retry(query, documents)
+                # Modify system prompt if selected text is provided
+                system_prompt = self.system_prompt
+                if selected_text and selected_text.strip():
+                    system_prompt = self.system_prompt + "\n\nIMPORTANT: The user has selected specific text from the book. This selected text is provided as the first document titled 'Selected Text (User Context)'. Prioritize this selected text when answering the user's question, as it represents the specific content they are asking about."
+
+                response = self._generate_response_with_retry(query, documents, system_prompt)
                 logger.info(f"Generated response: {response[:100]}...")
                 return response
 
@@ -160,15 +181,23 @@ Follow these rules strictly:
             logger.error(f"Unexpected error in retrieve(): {e}", exc_info=True)
             return "An unexpected error occurred. Please try again later."
 
-    def _generate_response_with_retry(self, query: str, documents: list) -> str:
+    def _generate_response_with_retry(self, query: str, documents: list, system_prompt: str = None) -> str:
         """
         Generate chat response with retry logic for rate limits.
+
+        Args:
+            query: User's question
+            documents: List of relevant documents from RAG
+            system_prompt: Optional custom system prompt (uses default if not provided)
 
         Returns:
             str: Generated response text
         Raises:
             Exception: If all retries fail
         """
+        # Use provided system prompt or fall back to default
+        prompt = system_prompt if system_prompt else self.system_prompt
+
         for attempt in range(self.max_retries):
             try:
                 logger.info(f"Generating chat response (attempt {attempt + 1}/{self.max_retries})")
@@ -177,7 +206,7 @@ Follow these rules strictly:
                     model="command-r-08-2024",
                     message=query,
                     documents=documents,
-                    preamble=self.system_prompt
+                    preamble=prompt
                 )
 
                 return response.text

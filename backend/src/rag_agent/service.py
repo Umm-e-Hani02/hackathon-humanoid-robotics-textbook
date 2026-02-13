@@ -1,6 +1,7 @@
 import logging
 from fastapi import APIRouter
 from pydantic import BaseModel, validator
+from typing import Optional
 from src.rag_agent.agent import RagAgent
 
 logging.basicConfig(level=logging.INFO)
@@ -8,6 +9,7 @@ logger = logging.getLogger(__name__)
 
 class UserQuery(BaseModel):
     text: str
+    selected_text: Optional[str] = None
 
     @validator('text')
     def text_must_not_be_empty(cls, v):
@@ -29,6 +31,7 @@ async def chat_with_agent(query: UserQuery):
 
     Features:
     - Validates input (non-empty text)
+    - Supports selected text as additional context
     - Handles all exceptions gracefully
     - Always returns valid JSON response
     - Never crashes or returns 500 errors to frontend
@@ -38,9 +41,11 @@ async def chat_with_agent(query: UserQuery):
     """
     try:
         logger.info(f"[/agent/chat] Received query: '{query.text}' (length: {len(query.text)})")
+        if query.selected_text:
+            logger.info(f"[/agent/chat] Selected text provided (length: {len(query.selected_text)})")
 
         # Main RAG processing with built-in error handling
-        response_text = agent.retrieve(query.text)
+        response_text = agent.retrieve(query.text, selected_text=query.selected_text)
 
         logger.info(f"[/agent/chat] Response generated successfully")
         return ChatbotResponse(answer=response_text)
