@@ -69,8 +69,8 @@ const config = {
   
 
     customFields: {
-          // API URL - Temporarily using production for local testing
-          apiUrl: process.env.API_URL || 'https://hackathon-humanoid-robotics-textbook-production.up.railway.app/agent/chat',
+          // API URL - Production Render backend
+          apiUrl: process.env.API_URL || 'https://hackathon-humanoid-robotics-textbook.onrender.com/agent/chat',
           // For local backend testing: 'http://127.0.0.1:8001/agent/chat'
 
 
