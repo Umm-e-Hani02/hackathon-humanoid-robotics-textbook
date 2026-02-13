@@ -13,6 +13,7 @@ const Chatbot = () => {
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [selectedText, setSelectedText] = useState('');
   const chatbotPanelRef = useRef(null);
   const messagesEndRef = useRef(null);
 
@@ -37,6 +38,26 @@ const Chatbot = () => {
     };
   }, []);
 
+  // Detect text selection on the page
+  useEffect(() => {
+    const handleTextSelection = () => {
+      const selection = window.getSelection();
+      const text = selection?.toString().trim();
+
+      if (text && text.length > 0) {
+        setSelectedText(text);
+      }
+    };
+
+    document.addEventListener('mouseup', handleTextSelection);
+    document.addEventListener('keyup', handleTextSelection);
+
+    return () => {
+      document.removeEventListener('mouseup', handleTextSelection);
+      document.removeEventListener('keyup', handleTextSelection);
+    };
+  }, []);
+
   const toggleChat = (e) => {
     e.stopPropagation();
     setIsOpen(!isOpen);
@@ -49,20 +70,24 @@ const Chatbot = () => {
     const userMessage = { id: Date.now(), text: inputValue, sender: 'user' };
     setMessages((prevMessages) => [...prevMessages, userMessage]);
     const questionText = inputValue;
+    const contextText = selectedText;
     setInputValue('');
     setIsLoading(true);
     setError(null);
 
     try {
       console.log('Sending request to:', apiUrl);
-      console.log('Request payload:', { text: questionText });
+      console.log('Request payload:', { text: questionText, selected_text: contextText });
 
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ text: questionText }),
+        body: JSON.stringify({
+          text: questionText,
+          selected_text: contextText || null
+        }),
       });
 
       console.log('Response status:', response.status);
@@ -78,6 +103,9 @@ const Chatbot = () => {
 
       const assistantMessage = { id: Date.now() + 1, text: data.answer, sender: 'assistant' };
       setMessages((prevMessages) => [...prevMessages, assistantMessage]);
+
+      // Clear selected text after sending
+      setSelectedText('');
 
     } catch (err) {
       console.error('Chat error:', err);
@@ -143,6 +171,26 @@ const Chatbot = () => {
             )}
             <div ref={messagesEndRef} />
           </div>
+
+          {selectedText && (
+            <div className="selected-text-indicator">
+              <div className="selected-text-header">
+                <span>📄 Selected text will be used as context</span>
+                <button
+                  className="clear-selection-btn"
+                  onClick={() => setSelectedText('')}
+                  aria-label="Clear selection"
+                >
+                  ✕
+                </button>
+              </div>
+              <div className="selected-text-preview">
+                {selectedText.length > 100
+                  ? `${selectedText.substring(0, 100)}...`
+                  : selectedText}
+              </div>
+            </div>
+          )}
 
           <div className="chatbot-input-area">
             <form onSubmit={handleSendMessage}>
