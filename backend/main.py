@@ -10,23 +10,26 @@ logger = logging.getLogger(__name__)
 
 app = FastAPI()
 
+# CORS configuration - production-ready
+# Allow specific origins for security
 origins = [
-    "http://localhost:3000",  # For local development of Docusaurus
-    "http://localhost:3001",  # Additional local development port
-    "https://physical-ai-and-humanoid-robots.github.io",  # Deployed Docusaurus site
-    "https://*.vercel.app",   # Vercel deployments
-    "https://*.netlify.app",  # Netlify deployments
-    "https://*.pages.dev",    # Cloudflare Pages
-    "https://*.github.io",    # GitHub Pages
-    "*"  # Allow all origins during development (be careful in production)
+    "http://localhost:3000",  # Local development
+    "http://localhost:3001",  # Local development (alternate port)
+    "https://umm-e-hani02.github.io",  # GitHub Pages
 ]
+
+# Add Vercel domain from environment variable if provided
+vercel_domain = os.getenv("FRONTEND_URL")
+if vercel_domain:
+    origins.append(vercel_domain)
+    logger.info(f"Added frontend URL to CORS: {vercel_domain}")
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["GET", "POST", "OPTIONS"],
+    allow_headers=["Content-Type", "Authorization"],
 )
 
 # Try to import and include the router
