@@ -32,7 +32,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Module 1: The Robotic Nervous System (ROS 2)',
+      label: 'Module 1: Sensors & Humanoid Fundamentals',
       items: [
         'module1/sensors-and-humanoid-basics',
         'module1/hands-on-simulated-environment',
@@ -40,7 +40,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Module 2: The Digital Twin (Gazebo & Unity)',
+      label: 'Module 2: The Robotic Nervous System (ROS 2)',
       items: [
         'module2/ros2-basics',
         'module2/rclpy-python-agents',
@@ -50,7 +50,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Module 3: The AI-Robot Brain (NVIDIA Isaac)',
+      label: 'Module 3: The Digital Twin (Gazebo & Unity)',
       items: [
         'module3/gazebo-simulation',
         'module3/unity-environments',
@@ -60,7 +60,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Module 4: Vision-Language-Action (VLA)',
+      label: 'Module 4: The AI-Robot Brain (NVIDIA Isaac)',
       items: [
         'module4/isaac-sdk-and-sim',
         'module4/isaac-ros',
