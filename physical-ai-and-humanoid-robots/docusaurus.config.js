@@ -69,12 +69,12 @@ const config = {
   
 
     customFields: {
-          // API URL - Production Render backend
-          apiUrl: process.env.API_URL || 'https://hackathon-humanoid-robotics-textbook.onrender.com/agent/chat',
-          // For local backend testing: 'http://127.0.0.1:8001/agent/chat'
-
-
-
+          // API URL - Automatically switches based on environment
+          // Development: http://127.0.0.1:8001/agent/chat
+          // Production: https://hackathon-humanoid-robotics-textbook.onrender.com/agent/chat
+          apiUrl: process.env.NODE_ENV === 'development'
+            ? 'http://127.0.0.1:8001/agent/chat'
+            : 'https://hackathon-humanoid-robotics-textbook.onrender.com/agent/chat',
         },
 
   
